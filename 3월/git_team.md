@@ -154,6 +154,7 @@ git push origin master
 git을 모르는 이유??
 git flow 협업을 시작한 역사가 길지 않음 (14~15년)
 
+<img src="https://heropy.blog/css/images/vendor_icons/html5.png"/>
 
 * 빠르게 개발 하는 방법
 물고기를 잡는 방법을 알아야함 -> 구글링의 한계 -> 공식 레퍼런스 보기(혼자서 할때 보는 연습)
