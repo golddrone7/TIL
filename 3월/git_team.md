@@ -77,8 +77,7 @@ new Organization -> 단체이름, 이메일, My personal account -> 승인
 Triage 권한
 Write 권한 Push까지 가능
 
-팀플
-
+<h4>미니 팀플 과제 github 협업해보기 </h4>
 주제 : 위키문서 만들기
 쥬라기 공룡 정보 만들기
 
@@ -99,4 +98,6 @@ master에는 무조건 병합커밋만 존재해야함.
 
 
 원격 마스터랑 로컬 마스터는 병합을 하기 위한 용도로만 사용하기
+
+
 
