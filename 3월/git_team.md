@@ -117,7 +117,7 @@ hotfix: master브랜치로 배포를 했는데 버그가 생겼을 때 긴급 �
 ㄴ 상식에 벗어나는 행동을 하게 되면 버그가 발생함. 개발 의도에 벗어 날 때 사용
 
 잘만들어진 깃 플로우
-ItsenPjt
+<a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/README%EC%96%91%EC%8B%9D.md">ItsenPjt</a>
 
 Readme 파일
 너네 저장소에 흥미를 끌 수 있고 너의 프로젝트에 이해를 돕기 위해 ReadMe 파일을 작성해라
