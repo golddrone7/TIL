@@ -47,7 +47,7 @@ git push origin --tags 로컬에서 만든 태그도 원격에 따로 올리기
 로컬에 태그 붙여도 원격에만 안올리면 됨 (release만 올리기)
 
 
-3장 - 팀개발
+<h3>3장 - 팀개발</h3>
 
 1. fork부터 상대방의 저장소를 내 저장소로 fork한다. -forked 명명
 2. git clone https://github.com/golddrone7/git-study-1-forked.git 내 저장소의 forked를 클론하기
