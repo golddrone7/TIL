@@ -99,5 +99,112 @@ master에는 무조건 병합커밋만 존재해야함.
 
 원격 마스터랑 로컬 마스터는 병합을 하기 위한 용도로만 사용하기
 
+Git-Flow
+
+개발을 하는 시간보다 문서를 작성하는 시간이 훨씬 많음
+함수명, 디자인패턴, 데이터베이스 스키마 설계, 변수명....
+협업을 할 때도 브랜치 전략을 말함
+
+ex)master는 절대 push를 하지 말고 merge만 (완성된 버전),
+  hotfixes 파일, release(bug), develop(test), feature branchs(release branch 병합)...
+개발자들 끼리의 약속.
+
+master : 기준이 되는 브랜치, 제품을 배포하는 브랜치
+develop : 개발 브랜치, 각자 작업한 기능을 합침
+feature: 단위 기능을 개발(조회, 댓글), 기능 개발이 완료되면 develop 브랜치에 합침
+release: 배포를 위해 master브랜치를 보내기 전에 테스트를 하는 브랜치
+hotfix: master브랜치로 배포를 했는데 버그가 생겼을 때 긴급 수정하는 브랜치
+ㄴ 상식에 벗어나는 행동을 하게 되면 버그가 발생함. 개발 의도에 벗어 날 때 사용
+
+잘만들어진 깃 플로우
+ItsenPjt
+
+Readme 파일
+너네 저장소에 흥미를 끌 수 있고 너의 프로젝트에 이해를 돕기 위해 ReadMe 파일을 작성해라
+(어떤 도움을 줄 수 있는지, 환경 설정은 어떻게 하고 어떤 기능이 있는지 설명하는 파일)
+git switch -c feat/readme master
+touch README.md    (깃허브에서 README 파일을 인식함 md는 마크다운을 의미, .git이 있는 루트 경로에 작성하기)
+notepad readme.md
+
+예제
+# Git을 열심히 공부하는 저장소
+
+---
+
+## 공부 기간
+- 2023.03.02 ~ 2023.03.06
+
+## 배운 내용들
+1. 로컬 저장소에서 버전관리하기
+- 주요 개념: init, add, commit, log, status
+2. 원격 저장소에서 버전관리하기
+- 주요 개념 : remote add, push, fetch, pull...
+3. 브랜치 관리하기
+- 주요 개념 : branch, merge
+4. 커밋 이력 관리하기
+- 주요 개념 : reset, amend, rebase, cherry-pick
+
+git add .
+git commit -m "readme 파일 추가하기"
+
+git fetch
+git pull
+git push origin master
+
+git을 모르는 이유??
+git flow 협업을 시작한 역사가 길지 않음 (14~15년)
+
+
+* 빠르게 개발 하는 방법
+물고기를 잡는 방법을 알아야함 -> 구글링의 한계 -> 공식 레퍼런스 보기(혼자서 할때 보는 연습)
+
+HTML이란? 구조를 만드는 언어
+ex)HTML(구조) : 건설사, 토지가 있으면 철근을 박아야함. 구역(Patition)을 나눔(1,2,3층, 거실, 화장실...)
+ex)CSS(인테리어) : 장판은 대리석, 벽지, 비데.. 
+ex)JavaScript(기능) : 수돗물, 문 열리는 기능, 서랍 열리는 기능..
+
+HTML 자체로 CSS 작업을 하면 안됨
+<h1>태그는 제목을 쓰는 용도(제일 중요함), 글씨 크기를 조절하는 기능아님, 글씨 크기는 CSS이 담당
+<h2> h1~h5는 중요도를 의미
+많이 하는 오해 ! 글씨 크기를 조절하는 기능아님, 글씨 크기는 CSS이 담당
+CSS 작업을 하기 전엔 reset을 함
+
+태그 :  <> </> 태그 한 쌍을 요소라 불림   
+요소(=태그) :  <p></p> p요소, 편의상 p태그라 함
+마크업 : 요소들을 이용하여 웹 문서를 작성
+속성 : 태그의 요소에 지정하는 것들
+
+<TAG 속성="값"> </TAG>
+<TAG 속성="값" 속성="값"><TAG>
+<a href="www.naver.com" class="naver-link"></a> class는 별명을 지님
+<부모태그> 1개의 부모는 n개의 자식을 가짐
+ <자식태그></자식태그>
+ <자식태그></자식태그>
+ <자식태그></자식태그>
+</부모태그>
+부모, 형제, 자식 관계, 조상 관계(할아버지, 증조, 고조, 부모), 자손(후손) 관계
+
+<!doctype html> 선언문   doc 문서 type 타입은 html 이다.
+<html></html> 형제는 head와 body만 들어감
+<head></head> 문서의 속성, 설정 정보, meta 데이터를 설명하는 데이터
+<body></body> 비쥬얼적인 UI
+
+meta를 잘 적어야 검색 엔진에 잘들어감 최적화(SEO)
+title 문서의 제목
+link CSS 파일 연결
+script 자바스크립트
+style CSS
+
+HTML CSS JAVASCIPT React => Visual studio code에서 진행
+
+D드라이브 html-css-study 생성
+File - open folder - D:\html-css-study - 폴더선택 - 신뢰하기 
+
+market place -> 
+korean (visual code 한글설정)
+material theme icons(폴더 아이콘), material theme (테마 바꾸기)
+파일-기본설정-설정, 워크밴치->모양->color theme
+파일-설정-바로가기 키-키바인딩 검색("글꼴")-편집기 글꼴 축소  (컨트롤 -), 확대(컨트롤 +)지정
+
 
 
