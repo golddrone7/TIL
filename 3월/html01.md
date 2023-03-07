@@ -2,7 +2,10 @@
 
 ## 목차
 <a href="#content-tag">1. 콘텐츠 구분 태그</a><br>
-<a href="#inline">2. 인라인</a>
+<a href="#inline">2. 인라인</a><br>
+<a href="#multi">3. 멀티미디어 내장 콘텐츠 태그</a><br>
+<a href="#table">4. 표 컨텐츠 태그</a><br>
+<a href="#input">5. 입력 양식</a><br>
 
 
 
@@ -73,6 +76,7 @@
 
 <div id="inline"></div>
 
+---
 
 ## 인라인 텍스트 태그
 
@@ -105,6 +109,10 @@
 - 강조, 약어가 아닐 때 쓰면됨
 - ` <span>동해물</span>` ` span{font-weight: 700;color: red; }` 꾸미는건 CSS
 
+---
+
+<div id="multi"></div>
+
 ## 멀티미디어 내장콘텐츠 태그
 
 ### 1. img
@@ -119,4 +127,103 @@
 
 - src는 필수 속성, alt는 대체 텍스트를 의미
 - html에도 속성으로 가로 세로길이를 지정할 수 있지만 철저하게 css에 작성하자!
+
+### 2. audio, video
+- 쿼리 음성, 영상 파일을 재생
+- 귀신 음악 소리같은 악용 소지로 웹에선 많은 제약 사항이 있음
+- autoplay...
+- 잘 사용하지 않고 iframe으로 대체함
+
+### 3. iframe
+- 웹의 콘텐츠를 웹에 삽입하는 방식으로 사용
+- ex) 유튜브 소스코드 복사
+
+---
+
+<div id="table"></div>
+
+## 표 컨텐츠 태그
+- table > tbody > tr > th + td 구조로 이루어짐
+- 게시판 형태를 사용할 때 많이 사용
+- 첫 줄에는 열의 정보 특정한 의미가 담김
+- 행과 열로 이루어짐
+- `table` 태그 안에서 border 지정 하지 말기
+- CSS로 작업
+- `border-collapese : collapse;` 중복 선 제거
+- `<th>` 태그는 1행에서 의미가 있는 데이터로 사용
+- table에서 가장 많이 하는 실수!
+- `table`의 자식은 `tbody` 자동으로 생성
+- 의도적으로 `<tbody></tbody>` 태그를 적어주자
+- 셀 병합을 하고 싶으면 `rowspan`과 `colspan` 속성을 사용하자
+  
+  ---
+
+<div id="input"></div>
+
+## 입력 양식
+### 1. form 태그
+- 수평 배치, 인라인 블록
+- form 태그는 클라이언트에서 서버에 내용을 보내고자 할 때 사용
+- 서버에서 입력 데이터들을 검증함
+- > ex)food 코트는 한식, 일식, 중식 서버가 있음, 
+- 데이터를 들고 넘어가기 위해선 name 속성 필요
+- `<input type="text" name="keyword">`
+- `http://lalala3213123.com/search?keyword=ddd`
+- 서버에 들어가기 위해선 여러가지 요청이 있음
+- `<form action="http://lalala3213123.com/search" method="get" autocomplete="off" novalidate></form>` 
+- get은 조회 (기본값, default)
+- post는 등록, 수정, 삭제 (갱신)   ex)회원가입(민감한 정보, 보안의 목적)
+- action 속성 : 이동하고자 하는 url(jsp, servlet ...)
+- `autocomplete="off"` 는 자동완성 기능 X
+- `novalidate` 는 검증을 하지 않겠다는 의미
+- `<input type="email" name="keyword">` 는 이메일 양식이지만, novalidate를 쓰면 검증하지 않고 넘어감
+- ```html
+    <form action="https://search.naver.com/search.naver" method="get" autocomplete="off" novalidate>
+        <input type="name" name="query">
+        <button>검색</button>
+    </form>
+    ```
+- git push는 항상 신중하게
+### 2. input 태그
+- 아직 만들지 않았으면 `"#"` 을 사용하자
+- value 속성은 회원가입을 하고 나서 바로 로그인을 할 때 사용한다
+- `type="password"`는 자동으로 마킹
+- `readonly` 논리 속성 (쓰면 true, 안쓰면 false), 단순하게 뛰울 때만 씀
+- html5 이전에는 `readonly="readonly"` 를 명시했다 
+- `type="email"`는 이메일 검증이 들어감
+- `placeholder="aaa@bbb.com"` 은 입력 힌트를 의미
+- `type="checkbox"` 체크박스, 다중 체크 가능 `checked` 속성을 붙이면 체킹
+- `disabled` 선점 된 좌석, 물품이 없을 땐 체킹이 안되게 막음
+- `type="radio" name="mail"` 라디오, 하나만 선택 가능 ! 그룹 지정을 하기 위해 name을 맞춰줌
+- ```html
+    <form action="#">
+        * 이름 : <input type="text" value="홍길동"><br>
+        * 패스워드 : <input type="password"><br>
+        * 이메일 : <input type="email" placeholder="aaa@bbb.com"><br>
+
+        * 취미 :
+        <input type="checkbox"> 게임
+        <input type="checkbox" checked> 축구
+        <input type="checkbox" disabled> 낮잠 <br>
+
+        # 메일 수신 여부 : 
+        <input type="radio" name="mail"> 예 
+        <input type="radio" name="mail"> 아니오 <br>
+        
+        # 주문 수량:
+        <input type="number" max="10" value="1">
+        <!-- 기본 태그가 디자인이 별로여서 자바 스크립트로 구현 -->
+        # 파일 : 
+        <input type="file" multiple>
+    
+        <!-- 사용자 몰래 서버로 보내야 하는 데이터 -->
+        <input type="hidden" name="nickname" value="바보">
+        <br>
+        <button type="button">그냥 버튼</button>
+        <button type="reset">입력값 초기화버튼</button>
+        <button type="submit">서버전송버튼</button>
+    </form>
+    ```
+- `type="submit"` 속성은 잘 안쓰임, 비밀번호 검증 같은 처리를 해야 하기 때문
+- `type="button"` 자바 스크립트를 활용하여 전처리 작업 후에 진행
 - 
