@@ -6,7 +6,8 @@
 <a href="#multi">3. 멀티미디어 내장 콘텐츠 태그</a><br>
 <a href="#table">4. 표 컨텐츠 태그</a><br>
 <a href="#input">5. 입력 양식</a><br>
-
+<a href="#jun">6. 전역 속성</a><br>
+<a href="#css">7. CSS</a><br>
 
 
 ## 오늘의 조언
@@ -226,4 +227,181 @@
     ```
 - `type="submit"` 속성은 잘 안쓰임, 비밀번호 검증 같은 처리를 해야 하기 때문
 - `type="button"` 자바 스크립트를 활용하여 전처리 작업 후에 진행
-- 
+
+### 3. label태그
+- label 태그에 작성한 내용도 클릭을 하면 체킹을 하게 만듬
+- `<input type="checkbox" id="remember">`
+- `<label><input type="checkbox">자동 로그인</label>` 
+- `<label for="remember">아이디 기억하기</label>`  물리적으로 떨어져 있어도 작동
+- 모바일 특성 상 체킹 박스는 너무나도 작음
+- 그러므로 라벨을 통해 묶어주는 방식이 바른 방향
+- 기본적인 속성은 인라인 속성
+
+### 4. textarea태그
+- 여러줄을 작성 할 수 있음
+- row, col 글자수를 지정 가능
+
+### 5. Select 태그
+- select 자식은 option 태그
+- ```html
+    <form action="#">
+        <select name="coffee">
+            <option value="아메리카노">Americano</option>
+            <option value="카페라떼">Caffe Latte</option>
+            <option value="카푸치노">Cappuccino</option>
+        </select>
+        <button>확인</button>
+
+        <input
+            type="text"
+            name="nick"
+            value="홍길동"
+            disabled
+        >
+    </form>
+
+    ```
+- `disabled` 는 입력을 막고 서버에도 데이터를 보내지 않음
+- `readonly` 는 입력만 막고 서버에는 데이터를 보냄
+  
+
+<div id="jun"></div>
+
+## 전역 속성
+### 1. class 속성
+- 클래스 속성은 별명을 지칭
+- 모든 태그에 붙일 수 있고 중복이 가능한 속성 
+- 여러개 부여 가능 `class="orange grape"` 2개의 별명을 가짐
+- 그룹을 나타날 때 표현
+### 2. id 속성
+- 식별자
+- 아이디는 중복 허용하지 않음
+- id는 한 태그 당 1개만 부여 가능 `form id="apple"`
+- 모든 태그에 사용 가능
+- 하나의 태그를 표현
+### 3. style 속성
+- 인라인 스타일로 지정 가능
+- `<input style="width: 200px;">` 쓰지 않는 것이 좋음
+  
+### 4. title 속성
+- 마우스에 올리면 값을 보여줌
+  
+### 5. data 속성
+- 우리가 커스텀 할 수 있는 속성
+- 네이버 `data-dark="false"` 같은 커스텀을 말함
+
+
+<div id="css"></div>
+
+## CSS
+<hr>
+
+## CSS 기초
+### 1. CSS 정의
+- 레이아웃, 폰트, 색상처리 등의 디자인 요소를 만들기 위한 언어
+- 마크업언어로 작성된 문서가 웹 사이트에 표현 방법을 정해주는 언어
+- 내부, 외부, 인라인 스타일 시트 3가지 종류
+### 2. 인라인 스타일
+- 정적인 형태는 인라인 스타일은 쓰지 않는 것이 좋음
+- 단점 : 유지보수 하기 힘듬
+
+### 3. 내부 스타일
+- html 내에 스타일 적용하기
+- 단점 : 여러 페이지에 적용할 수 없음
+- SPA (Sing Page Application) -> HTMl이 1개 (페이스북)
+
+### 4. 외부 스타일
+- 결론은 외부스타일이 바람직
+
+## 선택자
+
+### 1. CSS Selector
+### 2. 전체 선택자
+- `*` 전부를 의미함
+- `font-family: cursive;` 궁서체
+- 모든 태그 하나하나를 의미함
+- `body{border: 1px solid #000;}` 는 body 하나만을 의미함
+- `*{border: 1px solid #000;}` 은 모든 태그 하나 다 적용함
+### 3. 태그 선택자
+- `li{}` 모든 li 태그에 스타일 적용
+- `list-style:none` 
+- `font-size: 1.5em` 상위 요소 크기의 1.5배
+- `font-weight: 700` 굵은 글씨
+### 4. 클래스 선택자
+- `.orange{}` 
+- `background: orange;` 백그라운드 색을 오렌지 색상
+- li는 블록 속성, span은 인라인 속성
+### 5. 아이디 선택자
+- `#tomato{ background : tomato;}` 토마토 아이디를 가진 배경 색상이 토마토 색상
+- `width : fit-content`
+- `transform : rotate(180deg);`
+### 6. 일치 선택자
+- 동시에 여러 조건을 만족하는 경우
+- `li.orange{}` li태그의 클래스 이름이 orange
+- `p#tomato{}` p태그의 아이디가 tomato 
+- `#apple.reverse{}` id가 apple이면서 reverse 클래스
+- ```
+    h1.yellow.low.primary#change{
+        background: yellow;
+       }
+     <h1 class="yellow low primary" id="change">안녕하세요</h1>
+    ```
+### 7. 자식 선택자
+- 바로 직속 자식을 선택
+- 맨 뒤가 타겟, 앞에는 조건
+- `ul > .orange { background:orange;}` ul의 직속 자식인 orange 클래스를 선택
+- `body > div > ul > li{color : red;}` body 직속 div 직속 ul 직속 li 태그를 선택
+
+### 8. 후손 선택자
+- 후손을 선택함
+- 맨 뒤가 타겟, 앞에는 조건
+- `div .orange` div 태그 후손의 .orange 클래스를 선택
+- `body #tomato` body 태그 후손의 tomato 아이디를 선택
+- ``` html
+        /* 좋지 않은 코드
+        프로그램을 업데이트를 하게 되면 당근의 부모에 섹션이 추가 될 수 있음 */
+        .wrap > div{  
+            font-size: 1.5em;
+            color: orangered;
+        }
+        /* 유지 보수 측면상 자식 선택자보다 후손 선택자를 해야함 
+         지인짜~~~ 자식 선택자 밖에 없을 경우 써야 함*/
+        .wrap div{
+            font-size: 1.5em;
+            color: orangered; 
+        }
+    ```
+- 정리하자면 후손 선택자를 하는게 유지 보수에 좋음!!!~~
+- 후손의 후손의 후손을 넣으면 넣을 수록 우선 순위가 높음
+
+### 9. 형제 선택자
+- 인접 형제 선택자
+- `+`는 형제를 의미
+- `.orange + li { color : orangered;}` 형이 .orange 클래스를 가진 li 태그 
+- 선택자는 어떠한 방법을 써서 선택만 할 수 있음
+- `li + li { font-size: 24px}` 형이 li 태그를 가진 li 태그, 즉 첫번째 빼고 다 적용
+- `tr + tr {}`테이블에 많이 응용됨
+- 일반 형제 선택자
+- `.red ~ li{}` 형들중에 .red 클래스를 가진 li 태그
+- `+`는 직속 형, `~` 형들 중
+- 선택자를 잘하면 웹 크롤링을 할 때 좋음
+
+### 10. 그룹 선택자
+- `h1, h2, h3, h4, h5, h6{}` h1~h6 태그 전부를 선택
+
+### 11. 속성 선택자
+- `input[type=password]{}` input태그의 type이 password를 선택
+- `opacity: 0.8;` 투명도 80%
+- `[disabled]` disabled 속성을 가지고 있는 것을 선택
+
+### 12. 가상 선택자
+- hover : 요소에 마우스를 올렸을 때 적용
+- `.box:hover{}`
+- active : 요소에 마우스를 누르고 있는 동안에 적용
+- `.box:active{}`
+- focus : 요소에 포커싱(탭, 입력창 클릭)
+- `#common:focus{}`
+- `transition : 6s` 6초에 걸쳐서 서서히 변함
+- `outline : none;` 바깥선을 none으로 함
+- `transform : rotate(720deg);` 2바퀴 회전
+  
