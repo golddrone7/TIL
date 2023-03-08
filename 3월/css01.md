@@ -1,10 +1,19 @@
 # CSS
 
+## 목차
+<ol>
+<li><a href="#a">수도 클래스 선택자</a></li>
+<li><a href="#b">상속과 우선순위</a></li>
+<li><a href="#c">Box 속성</a></li>
+</ol>
+
 ## CSS 선택자
 - 생각할게 많음
 - CSS 수많은 속성들을 안다고 해도 응용을 하기 힘듬
 
 ---
+
+<div id="a"></div>
 
 ### 1. 수도 클래스 선택자
 - 선택해서 옵션을 줌
@@ -35,6 +44,7 @@
 - CSS 선택자는 워낙 다양하다, 정답이 없음
 
 ---
+<div id="b"></div>
 
 ### 2. 상속과 우선순위
 - 모르면 큰일남
@@ -59,6 +69,8 @@
 - 무한대점 + @ 도 우선순위를 가질 수 있음!
 
 ---
+
+<div id="c"></div>
 
 ## 3. Box 속성
 - 블록 요소에서 사용
@@ -138,3 +150,79 @@
 - `text-align : center` 는 박스 안에서의 텍스트 중앙 정렬
 - 텍스트와 박스를 같이 중앙 정렬을 하고 싶으면
 - text는 인라인이고 박스는 블록이다
+
+### padding
+- 박스 안쪽의 여백을 설정
+- 부모에 margin이 들어가면 자식도 따라서 움직임
+- 부모에 padding으로 자식을 밀어내면 커짐 (박스에 패딩을 입으면 커짐)
+- 전체적인 박스의 크기가 커진다
+- 문제가 생길 여지가 있음
+- 부모 컨테이너가 있고 자식 컨테이너 3개가 수평배치가 되어있음
+- 부보 가로 1000px 자식 가로 330px (990px)
+- 자식에 오른쪽 패딩을 50px로 부여하면 가로가 380px이 됨
+- 총 (1140px) 부모보다 자식의 합이 커서 화면이 깨지게 됨
+- 패딩을 준 만큼 사이즈를 내려야함 
+- 패딩, 보더로 가로 세로가 변하는걸 방지하는 속성
+- [공식] `box-sizing : border-box;` default option
+- `* { box-sizing: border-box; }` 전체 속성으로 지정하면 padding값의 크기 변화에 대처 가능
+- 예시) 폴라로이드 사진 (네이버는 카드 디자인 레이아웃으로 구성)
+- `.card{}  .card .img-box{}` 실무TIP)유지보수 측면, 속한 것의 의미
+- TIP) 만들때는 색을 입혀서 얼마만큼의 영역을 차지하고 있는가 
+
+### border
+- border는 박스 테두리 선을 의미
+- border-width 굵기
+- bodrder-style 스타일
+- border-color 색
+- `border` 도 `box-sizing`을 하지 않으면 크기에 영향을 미침
+- `border : 1px solid yellowgreen;` 단축속성, 순서는 상관없음
+- `border, padding`은 박스 사이징에 영향을 미침
+- `*{box-sizing:border-box;}`를 전역 속성으로 꼭 해주자 
+- solid, dashed, dotted, groove, double ...
+- `box-sizing :content-box` 는 박스 사이즈에 padding, border가 더해짐
+
+### CSS reset 개념
+- normalize, 정규화
+- html 태그에 기본적인 CSS가 있음
+- 구분하기 위해서 적음
+- CSS는 백지에서 하는 것이 좋음
+- 스타일링 하기 전에 기본 디자인을 싹 빼고 시작함
+- reset 파일을 새로 먼저 만듬
+- 인터넷에 reset 파일을 적용하자
+- `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">`
+- 커스텀 CSS를 적용하고자 하면 아래에 작성하자
+- 라이브러리 CSS 불러 올 때도 리셋 밑에다가 적어야함
+- 동점일 경우 아래에 있는 것이 적용되기 때문 (우선순위개념)
+- 즉 reset -> library > custom 순으로 배치하자
+
+### display 속성
+- 요소가 화면에 보여지는 특성을 지정
+- 대부분은 block 속성
+- 텍스트, 강조는 인라인 속성
+- inline-block 인라인 요소이면서 가로, 세로 너비 지정 가능 img, input, button 태그
+- none 요소를 사라지게 함
+- ex) 댓글 접기, 할일 삭제...
+- 기타 : flex, grid
+- `display:none;` 은 완전히 사라짐
+- `opacity:0;`은 투명도       0: 안보임 1 : 보임
+- 사라지고 위에서 올라가게끔 하면 `display:none`
+- 스스륵 사라지거나 나타나게 할거면 `opacity`
+
+
+### overflow
+- 박스 안에 내용물이 넘칠 때 제어
+- 넘치는 부분을 제어
+- 정말 많이 쓰임
+- 부모에게 쓰이는 속성
+- `overflow:hidden` 넘치면 숨긴다
+- `overflow:scroll` 넘치면 스크롤(가로, 세로)
+- `overflow:auto` 자동으로 스크롤(가로 or 세로) , 넘칠때만 스크롤
+- hidden은 왜 쓰는 걸까?
+- 숨겨서 얻을 수 있는 이득이 무엇일까
+- 프로필 사진 영역
+- 카카오 프로필 사진은 동그라미, 실제 사진은 네모
+- 동그라미 바깥쪽 부분은 hidden으로 처리함
+- 이미지는 사이즈에 모두 다 맞을 수가 없음
+- 세로 크기나 가로 크기 중 100%로 맞춰놓고 버릴 부분은 버리자
+- `overflow : hidden;` `height: 100%`
+
