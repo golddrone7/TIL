@@ -85,5 +85,56 @@
 - `body{font-size:15px;}` 글씨 크기가 작아져서 보완
 
 ### vw, vh
+- 뷰포트, 비율 설정
 - 반응형 웹을 만들 때 사용 ex) 깃허브
-- 
+- `<div>` 가로의 기본값 100%, 세로의 기본값 auto
+- auto는 컨텐츠의 높이나 가로를 말함
+- `{height : 50vh;}` 어떤 디바이스를 들어가도 화면의 절반을 차지
+- `{height : 100vh;}` 백그라운드 이미지를 넣을 때 사용
+- `body{ margin : 0 , padding : 0}` reset이란 개념
+- `body`는 어느정도 css가 들어가있음, 여백의 미
+- `vw` 는 뷰포트 가로를 의미, `vh` 는 뷰포트 세로를 의미
+
+### width, height
+- width는 요소의 가로를 설정
+- height는 요소의 세로를 설정
+- 둘 다 지정하지 않았을 경우 기본값은? auto
+- width의 auto는 100%를 의미하고
+- height의 auto는 컨텐츠의 높이를 의미
+- 신경 써야할 부분, 주의할 부분
+- > 부모의 높이를 픽셀로 고정값을 넣을 경우 자식이 더크면 깨짐<br>
+  > height는 auto로 쓰는 경우가 좋고, 기본 값은 auto 즉! 안쓰는 것이 좋음
+- body는 화면 전체를 말함
+- 자식은 항상 부모대비 크기를 적용
+
+### max-width, min-width, max-height, min-height
+- 이해하기 쉽지 않음
+- 최소한 어느정도까지만 줄이는 것이 `min-height`
+- 최대한 어느정도까지지 늘리는 것이 `max-height`
+- ex) 일정 관리, to-do List
+- 화면이 너무 없어보이지도 않게, 깨지지도 않게 하기 위해 사용
+- 콘텐츠의 수가 증가하거나 줄어드는 것의 최대, 최소 길이를 유지
+- 제한이 걸리는 역할 (부모, 자식) 크기
+- 최대 길이보다 넘을 경우 스크롤이 생성
+
+
+### margin
+- 여백을 의미
+- margin은 콘텐츠간에 여백
+- top, right, bottom, left
+- margin으로 빈 줄 효과도 쓸 수 있음
+- 기본값 0
+- 값을 %로 지정하면 부모요소의 width의 비율로 여백을 가짐
+- `margin-left : 37.5%; margin-right : 37.5%;` 가운데 정렬을 쉽게 쓰면
+- `margin-left : auto; margin-right : auto;` 박스가 x축 중앙정렬됨 
+- 좌우마진을 auto로 지정하면 center
+- alt 방향키(위, 아래) 코드 블록 이동
+- 단축속성 `{margin : 20px;}` ,`{margin : 30px auto;}`
+- 중앙정렬 공식 `{margin : 0 auto;}` 
+- >주의사항 : 부모의 사이즈랑 자식의 사이즈가 동일할 경우 중앙정렬이 되지 않음<br>
+    분배할 사이즈를 지정을 해줘야함
+- text-align과 margin center는 다른 개념이다
+- `margin: 0 auto;` 는 부모박스 안에서 자식박스의 x축 중앙정렬 필수적으로 자식의 가로가 부모보다 작아야 여유마진을 분배할 수 있음
+- `text-align : center` 는 박스 안에서의 텍스트 중앙 정렬
+- 텍스트와 박스를 같이 중앙 정렬을 하고 싶으면
+- text는 인라인이고 박스는 블록이다
