@@ -3,8 +3,6 @@
 ## 목차
 <ol>
   <li><a href="#a">글꼴, 문자 </a></li>
-  <li><a href="#"> </a></li>
-  <li><a href="#"> </a></li>
 </ol>
 
 ---
