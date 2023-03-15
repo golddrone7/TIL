@@ -148,5 +148,3 @@
 - `0.0<= ~ < 100.0` 
 ---
 
-## 원격 브랜치에서 바로 가지고 올 경우엔 teacher 리모트에 있는 master 브랜치에 바로 가지고 온다.
-### git switch -c tc teacher/master
