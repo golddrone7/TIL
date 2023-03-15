@@ -10,3 +10,4 @@
 <a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/css03.md ">2023년 3월 10일 CSS Position, 전환, 변환</a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/css04.md ">2023년 3월 13일 CSS 애니메이션, flex, 클론 사이트-1</a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/javascript01.md">2023년 3월 14일 반응형 웹, 클론 사이트-2</a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/javascript02.md">2023년 3월 15일 자바스크립트 ~반복문,조건문</a><br>
