@@ -23,3 +23,7 @@
 - git flow
 - [https://ko.javascript.info/function-expressions] 자바스크립트 함수 
 - [https://velog.io/@ansrjsdn/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%B6%94%EC%B2%9C-%EC%9E%90%EB%A3%8C-%EB%AA%A8%EC%9D%8C] 프론트엔드-추천-자료-모음
+
+
+### 공부할 것들
+- 22일날 DFS 복습하고 공부하기!!
