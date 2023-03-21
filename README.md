@@ -15,6 +15,8 @@
 <a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/javascript03.md">2023년 3월 16일 자바스크립트 제어문, up-down, 사칙연산 게임</a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/javascript04.md">2023년 3월 17일 자바스크립트 배열, 러시안 룰렛 게임</a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/javascript05.md">2023년 3월 20일 자바스크립트 함수, 재활용</a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/javascript06.md">2023년 3월 21일 자바스크립트 콜백함수, 고차함수</a><br>
+
 
 
 ### 추가로 공부할 내용들
