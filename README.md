@@ -20,7 +20,7 @@
 <a href="#">2023년 3월 23일 자바스크립트 []</a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/javascript08.md">2023년 3월 24일 자바스크립트 팀프로젝트, 이벤트, 모듈, 업다운게임</a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/java01.md">2023년 3월 27일 자바 오리엔테이션, 팀 프로젝트 신조어 소나기게임-1일차</a><br>
-
+<a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/java02.md">2023년 3월 28일 배열 알고리즘, 팀 프로젝트 신조어 소나기게임-2일차</a><br>
 
 ### 추가로 공부할 내용들
 - git flow
