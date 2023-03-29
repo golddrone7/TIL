@@ -20,4 +20,8 @@ System.out.println("찾은 인덱스: " + index);
 ```
 
 ## 2차원 배열
--
+
+## 인텔리제이 단축키
+`shift + f6` : 변수 전체 바꾸기
+`ctrl + alt + n` 리턴 인라인
+`ctrl + alt + v` 리턴에 뺄 때
