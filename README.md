@@ -24,7 +24,7 @@
 <a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/java03.md">2023년 3월 29일 다차원 배열, 폰트 추천, 팀프로젝트 설명, 소나기 게임-3일차 </a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/java04.md">2023년 3월 30일 객체, 소나기 게임-4일차 </a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/java05.md">2023년 3월 31일 this, 소나기 게임-5일차 </a><br>
-
+<a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/java06.md">2023년 4월 3일 PPT 발표, 향후 프로젝트, 캡슐화 </a><br>
 
 ### 추가로 공부할 내용들
 - git flow
