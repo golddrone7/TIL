@@ -1,4 +1,11 @@
 # TIL
+
+## 팀프로젝트 && 협업 경험
+### 1. <a href="https://github.com/golddrone7/CoupangLand">HTML+CSS를 활용한 쿠팡 페이지 만들기</a>
+- 4인 팀프로젝트, 진행 기간 3일
+### 2. <a href="https://github.com/golddrone7/golddrone7.github.io">HTML+CSS+JavaScript를 활용한 소나기 게임</a>
+- 3인 팀프로젝트, 진행 기간 5일
+
 ## <a href="https://github.com/golddrone7/TIL/blob/main/%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%85.md">트러블 슈팅</a><br>
 - 프로그래밍을 하면서 발생한 오류를 정리한 파일!!
 ### 공부 내용 정리!!!
@@ -24,7 +31,7 @@
 <a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/java03.md">2023년 3월 29일 다차원 배열, 폰트 추천, 팀프로젝트 설명, 소나기 게임-3일차 </a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/java04.md">2023년 3월 30일 객체, 소나기 게임-4일차 </a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/java05.md">2023년 3월 31일 this, 소나기 게임-5일차 </a><br>
-
+<a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/java06.md">2023년 4월 3일 PPT 발표, 향후 프로젝트, 캡슐화 </a><br>
 
 ### 추가로 공부할 내용들
 - git flow
@@ -34,4 +41,14 @@
 
 ### 공부할 것들
 - 22일날 DFS 복습하고 공부하기!!!!
-- 콜백함수!
+- React, Spring MVC, 개인 프로젝트 하는 방향으로
+https://www.kisa.or.kr/403
+
+### SQLD 시험 일정
+- https://www.dataq.or.kr/www/sub/a_04.do
+- 제49회
+- 접수기간 5.8~12	
+- 수험표 발급 5.26	
+- 시험 일정 6.10(토)
+- 사전 점수 발표 6.30	
+- 결과 발표 7.7	
