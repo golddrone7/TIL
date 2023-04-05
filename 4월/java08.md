@@ -35,4 +35,7 @@ static {
     sc = new Scanner(System.in);
 }
 ```
-- 
+## MVC
+- Controller : Java (중간처리)
+- Repository : DB
+- View : Javascript
