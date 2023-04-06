@@ -33,6 +33,8 @@
 <a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/java05.md">2023년 3월 31일 this, 소나기 게임-5일차 </a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/3%EC%9B%94/java06.md">2023년 4월 3일 PPT 발표, 향후 프로젝트, 캡슐화 </a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/java07.md">2023년 4월 4일 상속 </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/java08.md">2023년 4월 5일 다형성 </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/java09.md">2023년 4월 6일 인터페이스, 추상화 </a><br>
 
 
 ### 추가로 공부할 내용들
