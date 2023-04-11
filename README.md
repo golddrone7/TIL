@@ -37,7 +37,7 @@
 <a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/java09.md">2023년 4월 6일 인터페이스, 추상화 </a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/java10.md">2023년 4월 7일 예외처리 </a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/java11.md">2023년 4월 10일 IO, 직렬화, 팀 프로젝트 삼조 에어플레인 - 1 </a><br>
-
+<a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/java12.md">2023년 4월 11일 람다, 필터링, 매핑, 팀 프로젝트 삼조 에어플레인 - 2 </a><br>
 
 
 ### 추가로 공부할 내용들
