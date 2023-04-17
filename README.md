@@ -40,7 +40,8 @@
 <a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/java12.md">2023년 4월 11일 람다, 필터링, 매핑, 팀 프로젝트 삼조 에어플레인 - 2 </a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/java13.md">2023년 4월 12일 스트림, 팀 프로젝트 삼조 에어플레인 - 3 </a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/java14.md">2023년 4월 13일 웹 개발 개념, 향후 일정, 팀 프로젝트 삼조 에어플레인 - 4 </a><br>
-
+<a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/web01.md">2023년 4월 14일 JSP, Servlet, 팀 프로젝트 삼조 에어플레인 - 5 </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/web02.md">2023년 4월 17일 팀 프로젝트 삼조 에어플레인 - 발표 </a><br>
 ### 추가로 공부할 내용들
 - git flow
 - [https://ko.javascript.info/function-expressions] 자바스크립트 함수 
