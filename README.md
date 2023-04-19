@@ -43,7 +43,7 @@
 <a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/web01.md">2023년 4월 14일 JSP, Servlet, 팀 프로젝트 삼조 에어플레인 - 5 </a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/web02.md">2023년 4월 17일 팀 프로젝트 삼조 에어플레인 - 발표 </a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/web03.md">2023년 4월 18일 스프링 SOLID </a><br>
-<a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/web04.md">2023년 4월 19일 스프링 dispatcher 및 MVC모듈  </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/web04.md">2023년 4월 19일 스프링 dispatcher 및 MVC모듈1  </a><br>
 ### 추가로 공부할 내용들
 - git flow
 - [https://ko.javascript.info/function-expressions] 자바스크립트 함수 
