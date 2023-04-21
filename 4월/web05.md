@@ -15,7 +15,8 @@
 
 
 ## 1. 패키지 설계
-- 패키지 이름 : entity, controller, repository, dto
+- 패키지 이름 : entity, controller, repository, dto, service
+- 
   
 
 ## 2. URL 설계
