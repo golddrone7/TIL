@@ -1,225 +1,238 @@
 
 
-
-
-
--- 집계 함수 (다중행 함수)
--- : 여러 행을 묶어서 함수를 적용
-SELECT * FROM tb_sal_his
-WHERE pay_de BETWEEN '20190101' AND '20191231'
-ORDER BY emp_no, pay_de
+-- 사원들의 사번, 이름, 주소, 부서명
+SELECT 
+    E.emp_no, E.emp_nm, E.addr, D.dept_nm
+FROM tb_emp E 
+JOIN tb_dept D
+ON E.dept_cd = D.dept_cd
 ;
 
-SELECT * FROM tb_sal_his
-WHERE emp_no = '1000000005'
+-- 조인 기초 테스트 데이터
+CREATE TABLE TEST_A (
+    id NUMBER(10) PRIMARY KEY
+    , content VARCHAR2(200)
+);
+CREATE TABLE TEST_B (
+    b_id NUMBER(10) PRIMARY KEY
+    , reply VARCHAR2(100)
+    , a_id NUMBER(10)
+);
+
+INSERT INTO TEST_A  VALUES (1, 'aaa');
+INSERT INTO TEST_A  VALUES (2, 'bbb');
+INSERT INTO TEST_A  VALUES (3, 'ccc');
+
+INSERT INTO TEST_B  VALUES (1, 'ㄱㄱㄱ', 1);
+INSERT INTO TEST_B  VALUES (2, 'ㄴㄴㄴ', 1);
+INSERT INTO TEST_B  VALUES (3, 'ㄷㄷㄷ', 2);
+INSERT INTO TEST_B  VALUES (4, 'ㄹㄹㄹ', 3);
+COMMIT;
+
+SELECT * FROM test_a;
+SELECT * FROM test_b;
+
+-- CROSS JOIN, 카테시안 곱
+SELECT 
+    *
+FROM test_a, test_b
+;
+
+-- INNER JOIN (EQUI JOIN의 한 종류)
+SELECT 
+    *
+FROM test_a, test_b
+WHERE test_a.id = test_b.a_id -- 조인 조건
+;
+
+SELECT 
+    test_a.id, test_a.content, test_b.reply
+FROM test_a, test_b
+WHERE test_a.id = test_b.a_id 
+;
+
+SELECT 
+    A.id, A.content, B.reply
+FROM test_a A, test_b B
+WHERE A.id = B.a_id 
+;
+
+
+-- 자격증 관련 테이블
+SELECT * FROM tb_emp;
+SELECT * FROM tb_emp_certi;
+SELECT * FROM tb_certi;
+
+
+-- 사원의 사원번호와 취득 자격증명을 조회하고 싶음
+SELECT
+    A.emp_no, B.certi_nm
+FROM tb_emp_certi A, tb_certi B
+WHERE A.certi_cd = B.certi_cd
+ORDER BY A.emp_no, B.certi_cd
+;
+
+-- 사원의 사원번호와 사원이름과 취득 자격증명을 조회하고 싶음
+SELECT
+    A.emp_no, C.emp_nm, B.certi_nm
+FROM tb_emp_certi A, tb_certi B, tb_emp C
+WHERE A.certi_cd = B.certi_cd
+    AND A.emp_no = C.emp_no
+ORDER BY A.emp_no, B.certi_cd
+;
+
+-- 사원의 사원번호와 사원이름과 부서이름과 취득 자격증명을 조회하고 싶음
+SELECT
+    A.emp_no, C.emp_nm, D.dept_nm, B.certi_nm
+FROM tb_emp_certi A, tb_certi B, tb_emp C, tb_dept D
+WHERE A.certi_cd = B.certi_cd
+    AND A.emp_no = C.emp_no
+    AND C.dept_cd = D.dept_cd
+ORDER BY A.emp_no, B.certi_cd
+;
+
+
+-- 부서별 총 자격증 취득 수를 조회
+
+SELECT 
+    B.dept_cd, C.dept_nm, COUNT(A.certi_cd) "부서별 자격증 수"
+FROM tb_emp_certi A, tb_emp B, tb_dept C
+WHERE A.emp_no = B.emp_no
+    AND B.dept_cd = C.dept_cd
+GROUP BY B.dept_cd, C.dept_nm
+ORDER BY B.dept_cd
+;
+
+
+-- # INNER JOIN
+-- 1. 2개 이상의 테이블이 공통된 컬럼에 의해 논리적으로 결합되는 조인기법입니다.
+-- 2. WHERE절에 사용된 컬럼들이 동등연산자(=)에 의해 조인됩니다.
+
+-- 용인시에 사는 사원의 사원번호, 사원명, 주소, 부서코드, 부서명을 조회하고 싶다.
+
+SELECT 
+    A.emp_no, A.emp_nm, A.addr, A.dept_cd, B.dept_nm
+FROM tb_emp A, tb_dept B
+WHERE A.addr LIKE '%용인%'
+    AND A.dept_cd = B.dept_cd
+    AND A.emp_nm LIKE '김%'
+ORDER BY A.emp_no
+;
+
+-- JOIN ON (ANSI 표준 조인)
+-- 1. FROM절 뒤, WHERE 절 앞
+-- 2. JOIN 키워드 뒤에는 조인할 테이블명을 명시
+-- 3. ON 키워드 뒤에는 조인 조건을 명시
+-- 4. 조인 조건 서술부(ON절) 일반 조건 서술부 (WHERE절)를 분리해서 작성하는 방법
+-- 5. ON절을 이용하면 JOIN 이후의 논리연산이나 서브쿼리와 같은 추가 서술이 가능
+SELECT 
+    A.emp_no, A.emp_nm, A.addr, A.dept_cd, B.dept_nm
+FROM tb_emp A
+INNER JOIN tb_dept B
+ON A.dept_cd = B.dept_cd
+WHERE A.addr LIKE '%용인%'
+    AND A.emp_nm LIKE '김%'
+ORDER BY A.emp_no
+;
+
+-- 1980년대생 사원들의 사번, 사원명, 부서명, 자격증명, 취득일자를 조회
+SELECT
+    E.emp_no, E.emp_nm, E.birth_de, D.dept_nm, C.certi_nm, EC.acqu_de
+FROM tb_emp E, tb_dept D, tb_emp_certi EC, tb_certi C
+WHERE E.dept_cd = D.dept_cd
+    AND EC.certi_cd = C.certi_cd
+    AND E.emp_no = EC.emp_no
+    AND E.birth_de BETWEEN '19800101' AND '19891231'
 ;
 
 SELECT
-    SUBSTR(emp_nm, 1, 1) 성씨   
-FROM tb_emp
+    E.emp_no, E.emp_nm, E.birth_de, D.dept_nm, C.certi_nm, EC.acqu_de
+FROM tb_emp E 
+JOIN tb_dept D 
+ON E.dept_cd = D.dept_cd
+JOIN tb_emp_certi EC 
+ON E.emp_no = EC.emp_no
+JOIN tb_certi C
+ON EC.certi_cd = C.certi_cd
+WHERE E.birth_de BETWEEN '19800101' AND '19891231'
 ;
 
 
--- GROUP BY로 소그룹화 하지 않으면 집계함수는 전체행수를 기준으로 집계한다.
+-- SELECT [DISTINCT] { 열이름 .... } 
+-- FROM  테이블 또는 뷰 이름
+-- JOIN  테이블 또는 뷰 이름
+-- ON    조인 조건
+-- WHERE 조회 조건
+-- GROUP BY  열을 그룹화
+-- HAVING    그룹화 조건
+-- ORDER BY  정렬할 열 [ASC | DESC];
+
+
+
+-- JOIN ON 구문으로 카테시안 곱 만들기
 SELECT 
-    SUM(pay_amt) "지급 총액"
-    , AVG(pay_amt) "평균 지급액"
-    , COUNT(pay_amt) "지급 횟수"
-FROM tb_sal_his
-;
-
-SELECT * FROM tb_emp;
-
-SELECT 
-    COUNT(emp_no) AS "총 사원수"
-    , COUNT(direct_manager_emp_no) "dmen"
-    , COUNT(*) 
-    , MIN(birth_de) "최연장자의 생일"
-    , MAX(birth_de) "최연소자의 생일"
-    
-FROM tb_emp;
-
-
-SELECT 
-    direct_manager_emp_no
-FROM tb_emp;
-
-
--- GROUP BY : 지정된 컬럼으로 소그룹화 한 후 집계함수 적용
--- 부서별로 가장 어린사람의 생년월일, 연장자의 생년월일 부서별 총 사원 수를 조회
-
-SELECT * FROM tb_emp
-ORDER BY dept_cd
+    *
+FROM test_a A, test_B b
 ;
 
 SELECT 
-    dept_cd
-    , MAX(birth_de) 최연소자
-    , MIN(birth_de) 최연장자
-    , COUNT(emp_no) 직원수
-FROM tb_emp
-GROUP BY dept_cd
-ORDER BY dept_cd
-;
-
--- 사원별 누적 급여수령액 조회
-SELECT 
-    emp_no "사번"
-    , SUM(pay_amt) "누적 수령액"
-FROM tb_sal_his
-GROUP BY emp_no
-ORDER BY emp_no
-;
-
--- 사원별로 급여를 제일 많이받았을 때, 제일 적게받았을 때, 평균적으로 얼마받았는지 조회
-SELECT 
-    emp_no "사번"
-    , TO_CHAR(MAX(pay_amt), 'L999,999,999') "최고 수령액"
-    , TO_CHAR(MIN(pay_amt), 'L999,999,999') "최저 수령액"
-    , TO_CHAR(ROUND(AVG(pay_amt), 2), 'L999,999,999.99') "평균 수령액"
-    -- , ROUND(pay_amt, 2)
-FROM tb_sal_his
-GROUP BY emp_no
-ORDER BY emp_no
-;
-
--- 사원별로 2019년에 급여를 제일 많이받았을 때, 제일 적게받았을 때, 평균적으로 얼마받았는지 조회
-
-SELECT 
-    emp_no "사번"
-    , TO_CHAR(MAX(pay_amt), 'L999,999,999') "최고 수령액"
-    , TO_CHAR(MIN(pay_amt), 'L999,999,999') "최저 수령액"
-    , TO_CHAR(ROUND(AVG(pay_amt), 2), 'L999,999,999.99') "평균 수령액"
-    , TO_CHAR(SUM(pay_amt), 'L999,999,999') "연봉"
-FROM tb_sal_his
-WHERE pay_de BETWEEN '20190101' AND '20191231'
-GROUP BY emp_no
-ORDER BY emp_no
-;
-
--- HAVING : 그룹화된 결과에서 조건을 걸어 행 수를 제한
-
--- 부서별로 가장 어린사람의 생년월일, 연장자의 생년월일, 부서별 총 사원 수를 조회
--- 그런데 부서별 사원이 1명인 부서의 정보는 조회하고 싶지 않음.
-SELECT 
-    dept_cd
-    , MAX(birth_de) 최연소자
-    , MIN(birth_de) 최연장자
-    , COUNT(emp_no) 직원수
-FROM tb_emp
-GROUP BY dept_cd
-HAVING COUNT(emp_no) > 1
-ORDER BY dept_cd
+    *
+FROM test_a A 
+CROSS JOIN test_B b
 ;
 
 
--- 사원별로 급여를 제일 많이받았을 때, 제일 적게받았을 때, 평균적으로 얼마받았는지 조회
--- 평균 급여가 450만원 이상인 사람만 조회
-SELECT 
-    emp_no "사번"
-    , TO_CHAR(MAX(pay_amt), 'L999,999,999') "최고 수령액"
-    , TO_CHAR(MIN(pay_amt), 'L999,999,999') "최저 수령액"
-    , TO_CHAR(ROUND(AVG(pay_amt), 2), 'L999,999,999.99') "평균 수령액"
-FROM tb_sal_his
-GROUP BY emp_no
-HAVING AVG(pay_amt) >= 4500000
-ORDER BY emp_no
-;
+-- # NATURAL JOIN
+-- 1. NATURAL JOIN은 동일한 이름을 갖는 컬럼들에 대해 자동으로 조인조건을 생성하는 기법입니다.
+-- 2. 즉, 자동으로 2개 이상의 테이블에서 같은 이름을 가진 컬럼을 찾아 INNER조인을 수행합니다.
+-- 3. 이 때 조인되는 동일 이름의 컬럼은 데이터 타입이 같아야 하며, 
+--    ALIAS나 테이블명을 자동 조인 컬럼 앞에 표기하면 안됩니다.
+-- 4. SELECT * 문법을 사용하면, 공통 컬럼은 집합에서 한번만 표기됩니다.
+-- 5. 공통 컬럼이 n개 이상이면 조인 조건이 n개로 처리됩니다.
 
--- 사원별로 2019년 월평균 수령액이 450만원 이상인 사원의 사원번호와 2019년 연봉 조회
+-- 사원 테이블과 부서 테이블을 조인 (사번, 사원명, 부서코드, 부서명)
 SELECT 
-    emp_no
-    , SUM(pay_amt) 연봉
-FROM tb_sal_his
-WHERE pay_de BETWEEN '20190101' AND '20191231'
-GROUP BY emp_no
-HAVING AVG(pay_amt) >= 4500000
-;
-
--- 
-SELECT 
-    emp_no
-    , sex_cd
-    , dept_cd
-FROM tb_emp
-ORDER BY dept_cd, sex_cd
+    A.emp_no, A.emp_nm, B.dept_cd, B.dept_nm
+FROM tb_emp A
+INNER JOIN tb_dept B
+ON A.dept_cd = B.dept_cd
 ;
 
 
 SELECT 
-    dept_cd
-    , COUNT(*)
-FROM tb_emp
-GROUP BY dept_cd, sex_cd
-ORDER BY dept_cd
+    A.emp_no, A.emp_nm, dept_cd, B.dept_nm
+FROM tb_emp A
+NATURAL JOIN tb_dept B
 ;
 
-
--- ORDER BY : 정렬
--- ASC : 오름차 정렬 (기본값), DESC : 내림차 정렬
--- 항상 SELECT절의 맨 마지막에 위치
-
+-- # USING절 조인
+-- 1. NATURAL조인에서는 자동으로 이름과 타입이 일치하는 모든 컬럼에 대해
+--    조인이 일어나지만 USING을 사용하면 원하는 컬럼에 대해서면 선택적 조인조건을 
+--    부여할 수 있습니다.
+-- 2. USING절에서도 조인 컬럼에 대해 ALIAS나 테이블명을 표기하시면 안됩니다.
 SELECT 
-    emp_no
-    , emp_nm
-    , addr
-FROM tb_emp
-ORDER BY emp_no DESC
-;
-
-SELECT 
-    emp_no
-    , emp_nm
-    , addr
-FROM tb_emp
-ORDER BY emp_nm DESC
-;
-
-SELECT 
-    emp_no
-    , emp_nm
-    , dept_cd
-FROM tb_emp
-ORDER BY dept_cd ASC, emp_nm DESC
+    A.emp_no, A.emp_nm, dept_cd, B.dept_nm
+FROM tb_emp A
+INNER JOIN tb_dept B
+USING (dept_cd)
 ;
 
 
 SELECT 
-    emp_no AS 사번
-    , emp_nm AS 이름
-    , addr AS 주소
-FROM tb_emp
-ORDER BY 이름 DESC
-;
-
-SELECT 
-    emp_no
-    , emp_nm
-    , dept_cd
-FROM tb_emp
-ORDER BY 3 ASC, 1 DESC
+    *
+FROM tb_emp A
+INNER JOIN tb_dept B
+ON A.dept_cd = B.dept_cd
 ;
 
 
 SELECT 
-    emp_no
-    , emp_nm
-    , dept_cd
-FROM tb_emp
-ORDER BY 3 ASC, emp_no DESC
-;
-
-SELECT emp_no AS 사번, emp_nm AS 이름, addr AS 주소
-FROM tb_emp
-ORDER BY 이름, 1 DESC
+    *
+FROM tb_emp A
+NATURAL JOIN tb_dept B
 ;
 
 SELECT 
-    emp_no
-    , SUM(pay_amt) 연봉
-FROM tb_sal_his
-WHERE pay_de BETWEEN '20190101' AND '20191231'
-GROUP BY emp_no
-HAVING AVG(pay_amt) >= 4500000
-ORDER BY emp_no
-;
+    *
+FROM tb_emp A
+INNER JOIN 
