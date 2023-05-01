@@ -1,124 +1,192 @@
--- OUTER JOIN 실습환경 세팅
-INSERT INTO tb_dept VALUES ('100014', '4차산업혁명팀', '999999');
-INSERT INTO tb_dept VALUES ('100015', '포스트코로나팀', '999999');
-COMMIT;
-
-SELECT * FROM tb_dept;
-
-ALTER TABLE tb_emp DROP CONSTRAINT fk_tb_emp01;
-
-INSERT INTO tb_emp (emp_no, emp_nm, birth_de, sex_cd, addr, tel_no, direct_manager_emp_no, 
-                    final_edu_se_cd, sal_trans_bank_cd, sal_trans_accnt_no, dept_cd, lunar_yn)
-VALUES ('1000000041', '이순신', '19811201', '1', '경기도 용인시 수지구 죽전1동 435', '010-5656-7878',
-        NULL, '006', '003', '114-554-223433', '000000', 'N');
-
-INSERT INTO tb_emp (emp_no, emp_nm, birth_de, sex_cd, addr, tel_no, direct_manager_emp_no, 
-                    final_edu_se_cd, sal_trans_bank_cd, sal_trans_accnt_no, dept_cd, lunar_yn)
-VALUES ('1000000042', '정약용', '19820402', '1', '경기도 고양시 덕양구 화정동 231', '010-4054-6547',
-        NULL, '004', '001', '110-223-553453', '000000', 'Y');
-
-INSERT INTO tb_emp (emp_no, emp_nm, birth_de, sex_cd, addr, tel_no, direct_manager_emp_no, 
-                    final_edu_se_cd, sal_trans_bank_cd, sal_trans_accnt_no, dept_cd, lunar_yn)
-VALUES ('1000000043', '박지원', '19850611', '1', '경기도 수원시 팔달구 매탄동 553', '010-1254-1116',
-        NULL, '004', '001', '100-233-664234', '000000', 'N');
-        
-INSERT INTO tb_emp (emp_no, emp_nm, birth_de, sex_cd, addr, tel_no, direct_manager_emp_no, 
-            final_edu_se_cd, sal_trans_bank_cd, sal_trans_accnt_no, dept_cd, lunar_yn)
-VALUES ('1000000044', '장보고', '19870102', '1', '경기도 성남시 분당구 정자동 776', '010-1215-8784',
-        NULL, '004', '002', '180-345-556634', '000000', 'Y');
-        
-INSERT INTO tb_emp (emp_no, emp_nm, birth_de, sex_cd, addr, tel_no, direct_manager_emp_no, 
-            final_edu_se_cd, sal_trans_bank_cd, sal_trans_accnt_no, dept_cd, lunar_yn)
-VALUES ('1000000045', '김종서', '19880824', '1', '경기도 고양시 일산서구 백석동 474', '010-3687-1245',
-        NULL, '004', '002', '325-344-45345', '000000', 'Y');
-        
-COMMIT;
-    
- 
-SELECT * FROM tb_emp ORDER BY emp_no DESC;
-SELECT emp_no, emp_nm, dept_cd FROM tb_emp ORDER BY emp_no DESC;
-
-SELECT * FROM tb_dept;
-
--- # OUTER JOIN
--- 1. 조인 조건을 만족하지 않는 행들도 조회할 때 사용하는 조인기법입니다.
--- 2. OUTER조인 연산자 기호는 (+)기호입니다.
--- 3. INNER조인은 조인 조건을 만족하지 않으면 해당 행을 조회하지 않습니다
---   그러나 OUTER JOIN은 방향(LEFT, RIGHT, FULL)에 맞게 조건에 매칭되지 
---   않는 행들도 모두 NULL로 처리해서 조회합니다.
-
--- # LEFT OUTER JOIN
--- 조인되는 왼쪽 테이블은 모두 조회하고, 오른쪽 테이블은 조인조건에 매칭된 것만 조회합니다.
-
--- 나는 사원정보는 일단 다 보고 싶은데 혹시 부서테이블에서 부서코드가 매칭되면
--- 보너스로 부서이름도 찍어줘라
-
-SELECT COUNT(emp_no) FROM tb_emp;
+-- 집합 연산자
+-- ## UNION
+-- 1. 합집합 연산의 의미입니다.
+-- 2. 첫번째 쿼리와 두번째 쿼리의 중복정보는 한번만 보여줍니다.
+-- 3. 첫번째 쿼리의 열의 개수와 타입이 두번째 쿼리의 열수와 타입과 동일해야 함.
+-- 4. 자동으로 정렬이 일어남 (첫번째 컬럼 오름차가 기본값)
 
 SELECT 
-    emp_no, emp_nm, dept_cd
+    emp_no, emp_nm, birth_de
 FROM tb_emp
-ORDER BY emp_no
+WHERE birth_de BETWEEN '19600101' AND '19691231'
+UNION
+SELECT 
+    emp_no, emp_nm, birth_de
+FROM tb_emp
+WHERE birth_de BETWEEN '19700101' AND '19791231'
 ;
 
--- ANSI 표준
+
 SELECT 
-    A.emp_no, A.emp_nm, A.dept_cd, B.dept_nm
+    emp_nm, birth_de
+FROM tb_emp
+WHERE birth_de BETWEEN '19600101' AND '19691231'
+UNION
+SELECT 
+    emp_nm, birth_de
+FROM tb_emp
+WHERE birth_de BETWEEN '19700101' AND '19791231'
+;
+
+SELECT 
+    emp_nm EN, birth_de BD
+FROM tb_emp
+WHERE birth_de BETWEEN '19600101' AND '19691231'
+UNION
+SELECT 
+    emp_nm EN2, birth_de BD2
+FROM tb_emp
+WHERE birth_de BETWEEN '19700101' AND '19791231'
+ORDER BY BD DESC
+;
+
+
+-- ## UNION ALL
+-- 1. UNION과 같이 두 테이블로 수직으로 합쳐서 보여줍니다.
+-- 2. UNION과는 달리 중복된 데이터도 한번 더 보여줍니다.
+-- 3. 자동 정렬 기능을 지원하지 않아 성능상 유리합니다.
+
+SELECT 
+    emp_no, emp_nm, birth_de
+FROM tb_emp
+WHERE birth_de BETWEEN '19600101' AND '19691231'
+UNION ALL
+SELECT 
+    emp_no, emp_nm, birth_de
+FROM tb_emp
+WHERE birth_de BETWEEN '19700101' AND '19791231'
+;
+
+SELECT 
+    emp_nm, birth_de
+FROM tb_emp
+WHERE birth_de BETWEEN '19600101' AND '19691231'
+UNION ALL
+SELECT 
+    emp_nm, birth_de
+FROM tb_emp
+WHERE birth_de BETWEEN '19700101' AND '19791231'
+;
+
+-- ## INTERSECT
+-- 1. 첫번째 쿼리와 두번째 쿼리에서 중복된 행만을 출력합니다.
+-- 2. 교집합의 의미입니다.
+SELECT 
+    A.emp_no, A.emp_nm, A.addr
+    , B.certi_cd, C.certi_nm
 FROM tb_emp A
-LEFT JOIN tb_dept B
-ON A.dept_cd = B.dept_cd
-ORDER BY A.emp_no 
-;
-
+JOIN tb_emp_certi B
+ON A.emp_no = B.emp_no
+JOIN tb_certi C 
+ON B.certi_cd = C.certi_cd 
+WHERE C.certi_nm = 'SQLD'
+INTERSECT
 SELECT 
-    *
+    A.emp_no, A.emp_nm, A.addr
+    , B.certi_cd, C.certi_nm
 FROM tb_emp A
-LEFT OUTER JOIN tb_dept B
-ON A.dept_cd = B.dept_cd
-ORDER BY A.emp_no 
+JOIN tb_emp_certi B
+ON A.emp_no = B.emp_no
+JOIN tb_certi C 
+ON B.certi_cd = C.certi_cd 
+WHERE A.addr LIKE '%용인%';
+
+
+SELECT 
+    A.emp_no, A.emp_nm, A.addr
+    , B.certi_cd, C.certi_nm
+FROM tb_emp A
+JOIN tb_emp_certi B
+ON A.emp_no = B.emp_no
+JOIN tb_certi C 
+ON B.certi_cd = C.certi_cd 
+WHERE A.addr LIKE '%용인%'
+    AND C.certi_nm = 'SQLD'
 ;
 
--- Oracle 조인
+-- ## MINUS(EXCEPT) 
+-- 1. 두번째 쿼리에는 없고 첫번째 쿼리에만 있는 데이터를 보여줍니다.
+-- 2. 차집합의 개념입니다.
+
+SELECT emp_no, emp_nm, sex_cd, dept_cd FROM tb_emp
+MINUS
+SELECT emp_no, emp_nm, sex_cd, dept_cd FROM tb_emp WHERE dept_cd = '100001'
+MINUS
+SELECT emp_no, emp_nm, sex_cd, dept_cd FROM tb_emp WHERE dept_cd = '100004'
+MINUS
+SELECT emp_no, emp_nm, sex_cd, dept_cd FROM tb_emp WHERE sex_cd = '1'
+;
+
+
+
+-- 계층형 쿼리 
+-- START WITH : 계층의 첫 단계를 어디서 시작할 것인지의 대한 조건
+-- CONNECT BY PRIOR 자식 = 부모  -> 순방향 탐색
+-- CONNECT BY 자식 = PRIOR 부모  -> 역방향 탐색
+-- ORDER SIBLINGS BY : 같은 레벨끼리의 정렬을 정함.
 SELECT 
-    A.emp_no, A.emp_nm, A.dept_cd, B.dept_nm
-FROM tb_emp A, tb_dept B
-WHERE A.dept_cd = B.dept_cd (+)
+    LEVEL AS LVL,
+    LPAD(' ', 4*(LEVEL-1)) || emp_no || '(' || emp_nm || ')' AS "조직인원",
+    A.dept_cd,
+    B.dept_nm,
+    A.emp_no,
+    A.direct_manager_emp_no,
+    CONNECT_BY_ISLEAF
+FROM tb_emp A
+JOIN tb_dept B
+ON A.dept_cd = B.dept_cd
+START WITH A.direct_manager_emp_no IS NULL
+CONNECT BY PRIOR A.emp_no = A.direct_manager_emp_no
+ORDER SIBLINGS BY A.emp_no DESC
+;
+
+
+
+
+SELECT 
+    LEVEL AS LVL,
+    LPAD(' ', 4*(LEVEL-1)) || emp_no || '(' || emp_nm || ')' AS "조직인원",
+    A.dept_cd,
+    B.dept_nm,
+    A.emp_no,
+    a.direct_manager_emp_no
+FROM tb_emp A
+JOIN tb_dept B
+ON A.dept_cd = B.dept_cd
+START WITH A.emp_no = '1000000037'
+CONNECT BY A.emp_no = PRIOR A.direct_manager_emp_no;
+
+
+-- # SELF JOIN
+-- 1. 하나의 테이블에서 자기 자신의 테이블끼리 조인하는 기법입니다.
+-- 2. 자기 자신 테이블에서 pk와 fk로 동등조인합니다.
+
+SELECT 
+    A.emp_no
+    , A.emp_nm "사원명"
+    , A.addr "사원 주소"
+    , A.direct_manager_emp_no
+    , B.emp_nm "직속 상사 사원명"
+    , B.addr "직속 상사 주소"
+FROM tb_emp A
+LEFT JOIN tb_emp B
+ON A.direct_manager_emp_no = B.emp_no
 ORDER BY A.emp_no
 ;
 
--- # RIGHT OUTER JOIN
--- 조인되는 오른쪽 테이블은 모두 조회하고, 왼쪽 테이블은 조건에 매칭된것만 조회
-
--- 나는 모든 부서정보를 조회하고 싶은데 혹시 부서코드가 일치하는 사원이 있으면 함께 조회해줘
 SELECT 
-    A.emp_no, A.emp_nm, B.dept_cd, B.dept_nm
+    A.emp_no, A.emp_nm, A.direct_manager_emp_no
 FROM tb_emp A
-RIGHT OUTER JOIN tb_dept B
-ON A.dept_cd = B.dept_cd
-ORDER BY A.emp_no 
+ORDER BY A.emp_no
 ;
 
 SELECT 
-    *
-FROM tb_emp A
-RIGHT OUTER JOIN tb_dept B
-ON A.dept_cd = B.dept_cd
-ORDER BY A.emp_no 
+    B.emp_no, B.emp_nm, B.direct_manager_emp_no
+FROM tb_emp B
+ORDER BY B.emp_no
 ;
 
-SELECT 
-    A.emp_no, A.emp_nm, B.dept_cd, B.dept_nm
-FROM tb_emp A, tb_dept B
-WHERE A.dept_cd (+) = B.dept_cd
-ORDER BY A.emp_no 
-;
-
--- #FULL OUTER JOIN
--- - 왼쪽 조인테이블, 오른쪽 조인테이블을 모두 보여주고 매칭되면 매칭데이터까지 합쳐서 보여줌
-SELECT 
-    A.emp_no, A.emp_nm, B.dept_cd, B.dept_nm
-FROM tb_emp A
-FULL OUTER JOIN tb_dept B
-ON A.dept_cd = B.dept_cd
-ORDER BY A.emp_no 
-;
+ALTER TABLE tb_emp
+ADD CONSTRAINT fk_dm_emp_no
+FOREIGN KEY (direct_manager_emp_no)
+REFERENCES tb_emp(emp_no);
