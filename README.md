@@ -50,6 +50,9 @@
 <a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/db01.md">2023년 4월 24일 DML, DDL, DCL 개념 TRUNCATE, DROP, DELETE 차이점</a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/db02.md">2023년 4월 25일 SELECT, FROM, WHERE</a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/db03.md">2023년 4월 26일 FUNCTION</a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/db04.md">2023년 4월 27일 FUNCTION</a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/db05.md">2023년 4월 28일 GROUP By, HAVING</a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/db06.md">2023년 5월 1일 집합연산자, 계층형 쿼리, 페이징 처리 </a><br>
 ### 추가로 공부할 내용들
 - git flow
 - [https://ko.javascript.info/function-expressions] 자바스크립트 함수 
