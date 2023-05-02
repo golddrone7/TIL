@@ -1,195 +1,283 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+
+    <!-- reset -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+
+    <!-- fontawesome css: https://fontawesome.com -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
--- # 단일행 서브쿼리
---  서브쿼리의 조회 결과가 1건 이하인 경우
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/list.css">
 
--- 부서코드가 100004번인 부서의 사원정보 조회
+</head>
 
-SELECT 
-    emp_no, emp_nm, dept_cd
-FROM tb_emp
-WHERE dept_cd = '100004'
-;
+<body>
 
--- 사원이름이 이나라인 사람이 속해 있는 부서의 사원정보 조회
-SELECT 
-    A.emp_no, A.emp_nm, A.dept_cd
-FROM tb_emp A
-WHERE dept_cd = (SELECT dept_cd FROM tb_emp WHERE emp_nm = '이나라')
-;
+    <div id="wrap">
 
--- 사원이름이 이관심인 사람이 속해 있는 부서의 사원정보 조회
--- 단일행 비교연산자(=, <>, >, >=, <, <=)는 단일행 서브쿼리로만 비교해야 함.
-SELECT 
-    emp_no, emp_nm, dept_cd
-FROM tb_emp
-WHERE dept_cd = (SELECT dept_cd FROM tb_emp WHERE emp_nm = '이관심')
-;
+        <div class="main-title-wrapper">
+            <h1 class="main-title">꾸러기 게시판</h1>
+            <button class="add-btn">새 글 쓰기</button>
+        </div>
 
--- 20200525에 받은 급여가 회사전체의 20200525일 
--- 전체 평균 급여보다 높은 사원들의 정보(사번, 이름, 급여지급일, 받은급여액수) 조회
-SELECT 
-    A.emp_no, A.emp_nm, B.pay_de, B.pay_amt
-FROM tb_emp A
-JOIN tb_sal_his B
-ON A.emp_no = B.emp_no
-WHERE B.pay_de = '20200525'
-    AND B.pay_amt >= (
-                        SELECT AVG(pay_amt)
-                        FROM tb_sal_his
-                        WHERE pay_de = '20200525'
-                     )
-ORDER BY A.emp_no, B.pay_de
-;
+        <div class="top-section">
+            <!-- 검색창 영역 -->
+            <div class="search">
+                <form action="/board/list" method="get">
+                    
+                    <select class="form-select" name="type" id="search-type">
+                        <option value="title">제목</option>
+                        <option value="content">내용</option>
+                        <option value="writer">작성자</option>
+                        <option value="tc">제목+내용</option>
+                    </select>
 
--- 회사 전체 20200525 급여평균
-SELECT AVG(pay_amt)
-FROM tb_sal_his
-WHERE pay_de = '20200525'
-;
+                    <input type="text" class="form-control" name="keyword" value="${s.keyword}">
 
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
 
--- # 다중행 서브쿼리
--- 서브쿼리의 조회 건수가 0건 이상인 것
--- ## 다중행 연산자
--- 1. IN : 메인쿼리의 비교조건이 서브쿼리 결과중에 하나라도 일치하면 참
---    ex )  salary IN (200, 300, 400)
---            250 ->  200, 300, 400 중에 없으므로 false
--- 2. ANY, SOME : 메인쿼리의 비교조건이 서브쿼리의 검색결과 중 하나 이상 일치하면 참
---    ex )  salary > ANY (200, 300, 400)
---            250 ->  200보다 크므로 true
--- 3. ALL : 메인쿼리의 비교조건이 서브쿼리의 검색결과와 모두 일치하면 참
---    ex )  salary > ALL (200, 300, 400)
---            250 ->  200보다는 크지만 300, 400보다는 크지 않으므로 false
--- 4. EXISTS : 메인쿼리의 비교조건이 서브쿼리의 결과 중 만족하는 값이 하나라도 존재하면 참
+                </form>
+            </div>
+        </div>
 
+        <div class="card-container">
 
--- 한국데이터베이스진흥원에서 발급한 자격증을 가지고 있는
--- 사원의 사원번호와 사원이름과 해당 사원의 한국데이터베이스진흥원에서 
--- 발급한 자격증 개수를 조회
-
-SELECT certi_cd 
-FROM tb_certi 
-WHERE issue_insti_nm = '한국데이터베이스진흥원'
-;
-
-SELECT 
-    A.emp_no, A.emp_nm, COUNT(B.certi_cd) "자격증 개수"
-FROM tb_emp A
-JOIN tb_emp_certi B
-ON A.emp_no = B.emp_no
-WHERE B.certi_cd IN (
-                        SELECT certi_cd 
-                        FROM tb_certi 
-                        WHERE issue_insti_nm = '한국데이터베이스진흥원'
-                    )
-GROUP BY A.emp_no, A.emp_nm
-ORDER BY A.emp_no
-;
-
-SELECT 
-    A.emp_no, A.emp_nm, COUNT(B.certi_cd) "자격증 개수"
-FROM tb_emp A
-JOIN tb_emp_certi B
-ON A.emp_no = B.emp_no
-WHERE B.certi_cd = ANY (
-                        SELECT certi_cd 
-                        FROM tb_certi 
-                        WHERE issue_insti_nm = '한국데이터베이스진흥원'
-                    )
-GROUP BY A.emp_no, A.emp_nm
-ORDER BY A.emp_no
-;
-
--- EXISTS문 : 메인쿼리의 비교조건이 서브쿼리의 결과 중 만족하는 값이 하나라도 존재하면 참
--- 주소가 강남인 직원들이 근무하고 있는 부서정보를 조회 (부서코드, 부서명)
-SELECT emp_no, emp_nm, addr, dept_cd
-FROM tb_emp 
-WHERE addr LIKE '%강남%'
-;
-
-SELECT dept_cd, dept_nm
-FROM tb_dept
-WHERE dept_cd IN ('100009', '100010')
-;
-
-SELECT dept_cd, dept_nm
-FROM tb_dept 
-WHERE dept_cd IN (
-                    SELECT dept_cd
-                    FROM tb_emp 
-                    WHERE addr LIKE '%강남%'
-                )
-;
-
-SELECT 
-    1
-FROM tb_emp
-WHERE addr LIKE '%강난%'
-;
-
-SELECT A.dept_cd, A.dept_nm
-FROM tb_dept A
-WHERE EXISTS (
-                    SELECT 
-                        1
-                    FROM tb_emp B
-                    WHERE addr LIKE '%강남%'
-                        AND A.dept_cd = B.dept_cd
-                )
-;
-
--- # 다중 컬럼 서브쿼리
---  : 서브쿼리의 조회 컬럼이 2개 이상인 서브쿼리
-
--- 부서원이 2명 이상인 부서 중에서 각 부서의 
--- 가장 연장자의 사번과 이름 생년월일과 부서코드를 조회
-
-SELECT 
-    A.emp_no, A.emp_nm, A.birth_de, A.dept_cd, B.dept_nm
-FROM tb_emp A
-JOIN tb_dept B
-ON A.dept_cd = B.dept_cd
-WHERE (A.dept_cd, A.birth_de) IN (
-                        SELECT 
-                            dept_cd, MIN(birth_de)
-                        FROM tb_emp
-                        GROUP BY dept_cd
-                        HAVING COUNT(*) >= 2
-                    )
-ORDER BY A.emp_no
-;
+            <c:forEach var="b" items="${bList}">
+                <div class="card-wrapper">
+                    <section class="card" data-bno="${b.boardNo}">
+                        <div class="card-title-wrapper">
+                            <h2 class="card-title">${b.shortTitle}</h2>
+                            <div class="time-view-wrapper">
+                                <div class="time">
+                                    <i class="far fa-clock"></i>
+                                    ${b.date}</div>
+                                <div class="view">
+                                    <i class="fas fa-eye"></i>
+                                    <span class="view-count">${b.viewCount}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            
+                            ${b.shortContent}
+                            
+                        </div>
+                    </section>
+                    <div class="card-btn-group">
+                        <button class="del-btn" data-href="/board/delete?bno=${b.boardNo}">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </c:forEach>
 
 
--- 인라인 뷰 서브쿼리 (FROM절에 쓰는 서브쿼리)
+        </div>
+        <!-- end card container -->
 
--- 각 사원의 사번과 이름과 평균 급여정보를 조회하고 싶다.
-SELECT 
-    A.emp_no, A.emp_nm, B.pay_avg
-FROM tb_emp A, (
-                 SELECT 
-                    emp_no, AVG(pay_amt) AS pay_avg
-                 FROM tb_sal_his
-                 GROUP BY emp_no
-                    ) B
-WHERE A.emp_no = B.emp_no
-ORDER BY A.emp_no
-;
+        <!-- 게시글 목록 하단 영역 -->
+        <div class="bottom-section">
+
+            <!-- 페이지 버튼 영역 -->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination pagination-lg pagination-custom">
+
+                    
+                    <c:if test="${maker.page.pageNo != 1}">
+                        <li class="page-item"><a class="page-link" href="/board/list?pageNo=1&type=${s.type}&keyword=${s.keyword}">&lt;&lt;</a></li>
+                    </c:if>
+
+                    <c:if test="${maker.prev}">
+                        <li class="page-item"><a class="page-link" href="/board/list?pageNo=${maker.begin - 1}&type=${s.type}&keyword=${s.keyword}">prev</a></li>
+                    </c:if>
+
+                    <c:forEach var="i" begin="${maker.begin}" end="${maker.end}">
+                        <li data-page-num="${i}" class="page-item">
+                            <a class="page-link" href="/board/list?pageNo=${i}&type=${s.type}&keyword=${s.keyword}">${i}</a>
+                        </li>
+                    </c:forEach>
+                    
+                    
+                    <c:if test="${maker.next}">
+                        <li class="page-item"><a class="page-link" href="/board/list?pageNo=${maker.end + 1}&type=${s.type}&keyword=${s.keyword}">next</a></li>
+                    </c:if>
+
+                    <c:if test="${maker.page.pageNo != maker.finalPage}">
+                        <li class="page-item"><a class="page-link" href="/board/list?pageNo=${maker.finalPage}&type=${s.type}&keyword=${s.keyword}">&gt;&gt;</a></li>
+                    </c:if>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+
+    </div>
+
+    <!-- 모달 창 -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <p>정말로 삭제할까요?</p>
+            <div class="modal-buttons">
+                <button class="confirm" id="confirmDelete"><i class="fas fa-check"></i> 예</button>
+                <button class="cancel" id="cancelDelete"><i class="fas fa-times"></i> 아니오</button>
+            </div>
+        </div>
+    </div>
 
 
--- 스칼라 서브쿼리 (SELECT절에 쓰는 서브쿼리)
 
--- 사원의 사번, 사원명, 부서명, 생년월일, 성별코드를 조회
-SELECT 
-    A.emp_no
-    , A.emp_nm
-    , (SELECT B.dept_nm FROM tb_dept B WHERE A.dept_cd = B.dept_cd) AS dept_nm
-    , A.birth_de
-    , A.sex_cd
-FROM tb_emp A
-;
+    <script>
+
+        const $cardContainer = document.querySelector('.card-container');
+
+        //================= 삭제버튼 스크립트 =================//
+        const modal = document.getElementById('modal'); // 모달창 얻기
+        const confirmDelete = document.getElementById('confirmDelete'); // 모달 삭제 확인버튼
+        const cancelDelete = document.getElementById('cancelDelete'); // 모달 삭제 취소 버튼
+    
+        $cardContainer.addEventListener('click', e => {
+            // 삭제 버튼을 눌렀다면~
+            if (e.target.matches('.card-btn-group *')) {
+                console.log('삭제버튼 클릭');
+                modal.style.display = 'flex'; // 모달 창 띄움
+
+                const $delBtn = e.target.closest('.del-btn');
+                const deleteLocation = $delBtn.dataset.href;
+
+                // 확인 버튼 이벤트
+                confirmDelete.onclick = e => {
+                    // 삭제 처리 로직
+                    window.location.href = deleteLocation;
+
+                    modal.style.display = 'none'; // 모달 창 닫기
+                };
 
 
-SELECT 
-    emp_nm, null
-FROM tb_emp;
+                // 취소 버튼 이벤트
+                cancelDelete.onclick = e => {
+                    modal.style.display = 'none'; // 모달 창 닫기
+                };
+            } else { // 삭제 버튼 제외한 부분은 글 상세조회 요청
+
+                // section태그에 붙은 글번호 읽기
+                const bno = e.target.closest('section.card').dataset.bno;
+                // 요청 보내기
+                window.location.href= '/board/detail?bno=' + bno;
+            }
+        });
+
+        // 전역 이벤트로 모달창 닫기
+        window.addEventListener('click', e => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        //========== 게시물 목록 스크립트 ============//
+
+        function removeDown(e) {
+            if (!e.target.matches('.card-container *')) return;
+            const $targetCard = e.target.closest('.card-wrapper');
+            $targetCard?.removeAttribute('id', 'card-down');
+        }
+
+        function removeHover(e) {
+            if (!e.target.matches('.card-container *')) return;
+            const $targetCard = e.target.closest('.card');
+            $targetCard?.classList.remove('card-hover');
+
+            const $delBtn = e.target.closest('.card-wrapper')?.querySelector('.del-btn');
+            $delBtn.style.opacity = '0';
+        }
+
+        
+
+        $cardContainer.onmouseover = e => {
+
+            if (!e.target.matches('.card-container *')) return;
+
+            const $targetCard = e.target.closest('.card');
+            $targetCard?.classList.add('card-hover');
+
+            const $delBtn = e.target.closest('.card-wrapper')?.querySelector('.del-btn');
+            $delBtn.style.opacity = '1';
+        }
+
+        $cardContainer.onmousedown = e => {
+
+            if (e.target.matches('.card-container .card-btn-group *')) return;
+
+            const $targetCard = e.target.closest('.card-wrapper');
+            $targetCard?.setAttribute('id', 'card-down');
+        };
+
+        $cardContainer.onmouseup = removeDown;
+
+        $cardContainer.addEventListener('mouseout', removeDown);
+        $cardContainer.addEventListener('mouseout', removeHover);
+
+        // write button event
+        document.querySelector('.add-btn').onclick = e => {
+            window.location.href = '/board/write';
+        };
+
+        
+        //현재 위치한 페이지에 active 스타일 부여하기
+        function appendPageActive() {
+
+            // 현재 내가 보고 있는 페이지 넘버
+            const curPageNum = '${maker.page.pageNo}';
+            // console.log("현재페이지: ", curPageNum);
+
+            // 페이지 li태그들을 전부 확인해서 
+            // 현재 위치한 페이지 넘버와 텍스트컨텐츠가 일치하는
+            // li를 찾아서 class active 부여
+            const $ul = document.querySelector('.pagination');
+
+            for (let $li of [...$ul.children]) {
+                if (curPageNum === $li.dataset.pageNum) {
+                    $li.classList.add('active');
+                    break;
+                }
+            }
+
+        }
+
+        // 셀렉트옵션 검색타입 태그 고정
+        function fixSearchOption() {
+            const $select = document.getElementById('search-type');
+
+            for (let $opt of [...$select.children]) {
+                if ($opt.value === '${s.type}') {
+                    $opt.setAttribute('selected', 'selected');
+                    break;
+                }
+            }
+        }
+
+        appendPageActive();
+        fixSearchOption();
+
+
+    </script>
+
+</body>
+
+</html>
