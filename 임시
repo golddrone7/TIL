@@ -1,30 +1,35 @@
-// 각 댓글 하나의 태그
-            let tag = '';
+// 페이지 렌더링 함수
+        function renderPage({
+            begin, end, prev, next, page, finalPage
+        }) {
 
-            if (replies === null || replies.length === 0) {
-                tag += "<div id='replyContent' class='card-body'>댓글이 아직 없습니다! ㅠㅠ</div>";
-
-            } else {
-                for (let rep of replies) {
-                    tag += "<div id='replyContent' class='card-body' data-replyId='" + rep.replyNo + "'>" +
-                        "    <div class='row user-block'>" +
-                        "       <span class='col-md-3'>" +
-                        "         <b>" + rep.replyWriter + "</b>" +
-                        "       </span>" +
-                        "       <span class='offset-md-6 col-md-3 text-right'><b>" + formatDate(rep.replyDate) +
-                        "</b></span>" +
-                        "    </div><br>" +
-                        "    <div class='row'>" +
-                        "       <div class='col-md-6'>" + rep.replyText + "</div>" +
-                        "       <div class='offset-md-2 col-md-4 text-right'>";
-
-                    // if (currentAccount === rep.account || auth === 'ADMIN') {
-                        tag +=
-                            "         <a id='replyModBtn' class='btn btn-sm btn-outline-dark' data-bs-toggle='modal' data-bs-target='#replyModifyModal'>수정</a>&nbsp;" +
-                            "         <a id='replyDelBtn' class='btn btn-sm btn-outline-dark' href='#'>삭제</a>";
-                    // }
-                    tag += "       </div>" +
-                        "    </div>" +
-                        " </div>";
-                }
+            let tag = "";
+            //이전 버튼 만들기
+            if (prev) {
+                tag += "<li class='page-item'><a class='page-link page-active' href='" + (begin - 1) +
+                    "'>이전</a></li>";
             }
+            //페이지 번호 리스트 만들기
+            for (let i = begin; i <= end; i++) {
+                let active = '';
+                if (page.pageNo === i) {
+                    active = 'p-active';
+                }
+
+                tag += "<li class='page-item " + active + "'><a class='page-link page-custom' href='" + i +
+                    "'>" + i + "</a></li>";
+            }
+            //다음 버튼 만들기
+            if (next) {
+                tag += "<li class='page-item'><a class='page-link page-active' href='" + (end + 1) +
+                    "'>다음</a></li>";
+            }
+
+            // 페이지태그 렌더링
+            const $pageUl = document.querySelector('.pagination');
+            $pageUl.innerHTML = tag;
+
+            // ul에 마지막페이지 번호 저장.
+            $pageUl.dataset.fp = finalPage;
+
+        }
