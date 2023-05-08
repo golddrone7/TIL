@@ -1,12 +1,16 @@
-/* 페이지 액티브 기능 */
-        .pagination .page-item.p-active a {
-            background: #333 !important;
-            color: #fff !important;
-            cursor: default;
-            pointer-events: none;
-        }
+// 페이지 클릭 이벤트 핸들러
+        function makePageButtonClickEvent() {
+            // 페이지 버튼 클릭이벤트 처리
+            const $pageUl = document.querySelector('.pagination');
+            $pageUl.onclick = e => {
+                if (!e.target.matches('.page-item a')) return;
 
-        .pagination .page-item:hover a {
-            background: #888 !important;
-            color: #fff !important;
+                e.preventDefault();
+                // 누른 페이지 번호 가져오기
+                const pageNum = e.target.getAttribute('href');
+                // console.log(pageNum);
+
+                // 페이지 번호에 맞는 목록 비동기 요청
+                getReplyList(pageNum);
+            };
         }
