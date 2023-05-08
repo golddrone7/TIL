@@ -53,6 +53,10 @@
 <a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/db04.md">2023년 4월 27일 FUNCTION</a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/db05.md">2023년 4월 28일 GROUP By, HAVING</a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/4%EC%9B%94/db06.md">2023년 5월 1일 집합연산자, 계층형 쿼리, 페이징 처리 </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/db07.md">2023년 5월 2일 서브쿼리 </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/db08.md">2023년 5월 3일 뷰, 그룹함수</a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/CSR01.md">2023년 5월 4일 CSR </a><br>
+
 ### 추가로 공부할 내용들
 - git flow
 - [https://ko.javascript.info/function-expressions] 자바스크립트 함수 
@@ -71,4 +75,4 @@ https://www.kisa.or.kr/403
 - 수험표 발급 5.26	
 - 시험 일정 6.10(토)
 - 사전 점수 발표 6.30	
-- 결과 발표 7.7	...
+- 결과 발표 7.7	...11
