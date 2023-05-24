@@ -15,3 +15,11 @@
 - 편하게 css를 작성할 수 있음
 - 라이브러리가 필요함
 - 구조화 시킬 수 있음 
+- flex: 1 다른건 최소영역만 먹게하고 가로영역 전체 차지해 
+### 정중앙 공식
+```css
+        display: flex;
+        justify-content: center;
+        align-items: center;
+```
+- 속성을 세로로 작성하면 가독성 좋음
