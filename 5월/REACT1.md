@@ -6,4 +6,5 @@
 - rafce
 - rafce
 - 템플릿 잡아주기
+- index.html에 reset 걸어주기
 - 
