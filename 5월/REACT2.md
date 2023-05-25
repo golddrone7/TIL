@@ -13,4 +13,11 @@
 - `todoList.map(todo => <TodoItem key={todo.id} item={todo} />)` 
 - 성능 최적화 문제
 
-ㅇ
+### 리액트스러운 코드
+- 페이로드 만들어서 객체를 올려보내면 됨 
+- but 바닐라 스러운 코드임
+- 실제로 구현이 어려우면 querySelector 씀
+- 리액트는 input에 state를 상태값을 넘겨줌
+
+### 데이터 전달
+- 
