@@ -74,6 +74,13 @@
 
 
 .
+
+
+### 재밌는 내용들
+- [https://bbbicb.tistory.com/55] UUID는 정말 안전할까?
+
+
+
 ### 추가로 공부할 내용들
 - git flow
 - [https://ko.javascript.info/function-expressions] 자바스크립트 함수 
