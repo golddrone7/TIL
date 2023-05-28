@@ -7,7 +7,7 @@
 - 3인 팀프로젝트, 진행 기간 5일
 ### 3. <a href="https://github.com/golddrone7/airSamjo">Java를 활용한 항공 예약 시스템</a>
 - 3인 팀프로젝트, 진행 기간 5일
-### 3. <a href="https://github.com/golddrone7/jeju-campking">제주캠프킹</a>
+### 4. <a href="https://github.com/golddrone7/jeju-campking">스프링부트를 활용한 제주캠프킹</a>
 - 5인 팀프로젝트, 진행 기간 3주
 ## <a href="https://github.com/golddrone7/TIL/blob/main/%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%85.md">트러블 슈팅</a><br>
 - 프로그래밍을 하면서 발생한 오류를 정리한 파일!!
