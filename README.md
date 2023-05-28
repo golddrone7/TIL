@@ -56,6 +56,23 @@
 <a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/db07.md">2023년 5월 2일 서브쿼리 </a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/db08.md">2023년 5월 3일 뷰, 그룹함수</a><br>
 <a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/CSR01.md">2023년 5월 4일 CSR </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/CSR02.md">2023년 5월 8일 프론트엔드 모듈화, 프로젝트 구조, DB 설계 </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/CSR03.md">2023년 5월 9일 DB, Entity 설계방법, mapper, typealias </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/CSR04.md">2023년 5월 10일 중복검사, 실시간 fetch 처리, REST 방식  </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/CSR05.md">2023년 5월 11일 쿠키와 세션, 쿠키시 주의할점 </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/CSR06.md">2023년 5월 12일 인증, 인가, 인터셉터 </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/CSR07.md">2023년 5월 15일 자동로그인 </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/CSR08.md">2023년 5월 16일 파일업로드, 디테일처리 </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/CSR09.md">2023년 5월 17일 댓글 프로필 렌더링 </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/CSR10.md">2023년 5월 18일 카카오 로그인 </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/CSR11.md">2023년 5월 19일 SNS인증, 경로 DB </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/CSR12.md">2023년 5월 22일 리액트 환경세팅 </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/CSR13.md">2023년 5월 23일 리액트 Props, State </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/REACT1.md">2023년 5월 24일 TODO app 1일차, SCSS </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/REACT2.md">2023년 5월 25일 TODO app 2일차 </a><br>
+<a href="https://github.com/golddrone7/TIL/blob/main/5%EC%9B%94/REACT3.md">2023년 5월 26일 TODO app 3일차 </a><br>
+
+
 .
 ### 추가로 공부할 내용들
 - git flow
@@ -71,7 +88,6 @@ https://www.kisa.or.kr/403
 ### SQLD 시험 일정
 - https://www.dataq.or.kr/www/sub/a_04.do
 - 제49회
-- 접수기간 5.8~12	
 - 수험표 발급 5.26	
 - 시험 일정 6.10(토)
 - 사전 점수 발표 6.30	
