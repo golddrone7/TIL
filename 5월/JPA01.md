@@ -29,5 +29,40 @@ server:
 - `ddl-auto: update`로 두고하면됨
 - 컬럼명이 바뀔 경우 alter문이 나감
 - 배포상황일 땐 none으로 설정함, 테이블을 미리 만들어야함
-- 
+
+
+```java
+package com.study.jpa.chap01_basic.repository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+
+@SpringBootTest
+@Transactional
+@Rollback(false) // 공부할 땐 false로 하고 실무에선 true로 함 
+class ProductRepositoryTest {
+    @Autowired
+    ProductRepository productRepository;   
+}
+```
+
+### 약어설정
+- 인텔리제이 - 라이브템플릿에서 관리함
+- tdd
+
+## 랜덤 문자 pk
+- pk는 랜덤문자로 하는게 맞음
+- uuid
+
+## jpa
+- 경우의 수가 많음
+- 이런게 있다 정도만 알 면 좋음
+- QueryDSL이 더 편함
+- 한국은 아직 mybatis를 주로 씀
+- 복잡한 쿼리는 mybatis쓰고 간단한 쿼리는 jpa쓰는 경우도 있음
 - 
