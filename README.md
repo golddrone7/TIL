@@ -77,6 +77,9 @@
 
 
 .
+- 토큰 시큐리티 @AuthenticationPrincipal
+- [https://velog.io/@jyleedev/AuthenticationPrincipal-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%A0%95%EB%B3%B4-%EB%B0%9B%EC%95%84%EC%98%A4%EA%B8%B0]
+
 
 
 ### 재밌는 내용들
