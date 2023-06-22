@@ -11,4 +11,7 @@
 - EC2 인스턴스, 컨테이너, IP 주소
 - ALB(Application Load Balance)
 - devops, sa professional 목표
-- 
+  
+- 하루 2시간, 2달
+- SA associate
+- Developer pro
