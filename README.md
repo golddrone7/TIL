@@ -83,7 +83,7 @@
 
 
 ### 재밌는 내용들
-- [https://bbbicb.tistory.com/55] UUID는 정말 안전할까?
+- [https://bbbicb.tistory.com/55] UUID는 정말 안전할까?1
 - 
 
 ### 추가로 공부할 내용들
