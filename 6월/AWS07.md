@@ -99,4 +99,63 @@ public class HealthCheckController{
 }
 ```
 - 이 프로젝트를 깃허브에 업로드함
+
+### 2차시
+- [ec2-user@ip-172-31-34-251 ~]$ pwd
+- [ec2-user@ip-172-31-34-251 ~]$ cd/
+- [ec2-user@ip-172-31-34-251 ~]$ ls/
+- [ec2-user@ip-172-31-34-251 ~]$ cd usr
+- [ec2-user@ip-172-31-34-251 ~]$ cd local
+- [ec2-user@ip-172-31-34-251 ~]$ pwd
+- [ec2-user@ip-172-31-34-251 ~]$ mkdir project
+- [ec2-user@ip-172-31-34-251 ~]$ sudo su                루트계정
+- [ec2-user@ip-172-31-34-251 ~]# pwd
+- [ec2-user@ip-172-31-34-251 ~]# mkdir project
+- [ec2-user@ip-172-31-34-251 ~]# ls
+- [ec2-user@ip-172-31-34-251 ~]# cd project/
+- [ec2-user@ip-172-31-34-251 ~]# git clone [저장소 원격주소]
+- [ec2-user@ip-172-31-34-251 ~]# ls
+- [ec2-user@ip-172-31-34-251 ~]# cd todo-api202306/
+- [ec2-user@ip-172-31-34-251 ~]# cd src/main/
+- [ec2-user@ip-172-31-34-251 ~]# ls
+- [ec2-user@ip-172-31-34-251 ~]# mkdir resources
+- [ec2-user@ip-172-31-34-251 ~]# ls
+- [ec2-user@ip-172-31-34-251 ~]# cd resources
+- [ec2-user@ip-172-31-34-251 ~]# vi application.yml
+- i 누르고 application.yml파일복사하고 붙여넣음,
+-  ddl-auto: update 
+-  RDS endpoint 설정하기 : url : jdbc:mariadb://teamprj-database.cbcszxd0fody.ap-north-2.rds.amazonaws.com:3306/prj 
+-  port : 80
+-  logging.level:
+   -  org.hibernate.SQL: info
+- esc눌러서 insert모드 빠져나오기
+- vi툴 사용이 어려우면 로컬에서 바꾸고 붙여넣어도됨
+- :wq
+- tail -200p application.yml
+- [ec2-user@ip-172-31-34-251 ~]# cd /usr/local/project/todo-api202306/
+- [ec2-user@ip-172-31-34-251 ~]# ls
+- gradle의 Tasks/build/build
+- 수동으로 터미널에서 build를 해야함
+- [ec2-user@ip-172-31-34-251 ~]# ./gradlew build
+- bash: ./gradlew: Permission denied, 권한 거부당함
+- [ec2-user@ip-172-31-34-251 ~]# ls -l
+- -rw-r--r--, -는 폴더 x권한을 줘야함, 
+- drwxr-xr-x. 디렉토리
+- 권한 읽기 4점, 쓰기 2점, 실행 1점
+- [ec2-user@ip-172-31-34-251 ~]# chmod 777 `모든 관리자, 그룹, 사용자에게 읽기 쓰기 실행 권한을 다준다는 의미`
+  - [ec2-user@ip-172-31-34-251 ~]# chmod 741 
+- [ec2-user@ip-172-31-34-251 ~]# ls -l
+- [ec2-user@ip-172-31-34-251 ~]# ./gradlew build
+- 첫 빌드는 라이브러리를 받아야하기 때문에 느림
+- [ec2-user@ip-172-31-34-251 ~]# cd build/
+- [ec2-user@ip-172-31-34-251 ~]# ls
+- [ec2-user@ip-172-31-34-251 ~]# java -jar todo-0.0.1 SNAPSHOT
+- [ec2-user@ip-172-31-34-251 ~]# java -jar build todo-0.0.1
+- 백그라운드 실행
+- [ec2-user@ip-172-31-34-251 ~]# sudo su
+- [ec2-user@ip-172-31-34-251 ~]# cd /usr/local/project/todo-api202306/
+- [ec2-user@ip-172-31-34-251 ~]# nohup java -jar build/libs/todo-0.0.01-SNAPSHOT.jar &
+- [ec2-user@ip-172-31-34-251 ~]# tail -200 nohup.out
+- [ec2-user@ip-172-31-34-251 ~]# tail -200 
+- post man에 http://탄력아이피주소/api/auth
 - 
