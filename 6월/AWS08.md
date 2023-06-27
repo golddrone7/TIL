@@ -14,4 +14,14 @@
 - [ec2]# git pull origin master
 - [ec2]# ./gradlew clean
 - [ec2]# ./gradlew build
+- [ec2]# java -jar build/libs/todo-0.0.1-snapshot.jar
+- [ec2] nohup java -jar build/libs/todo-0.0.1-snapshot.jar &
+- [ec2]# tail -200 -noout
+- npm start
+- 리액트 앱은 S3에 배포하기
+- 리액트를 EC2에 해도되긴하지만, 정적 웹페이지이기 때문에 굳이 올릴필요없음
+- aws root로 모든 것을 하는 건 좋지 않은 방법
+- IAM 
+- [ec2]# nohup java -jar build/libs/todo-0.0.1-SNAPSHOT ~~~
+- npm build
 - 
