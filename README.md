@@ -9,6 +9,11 @@
 - 3인 팀프로젝트, 진행 기간 5일
 ### 4. <a href="https://github.com/golddrone7/jeju-campking">스프링부트를 활용한 제주캠프킹</a>
 - 5인 팀프로젝트, 진행 기간 3주
+### 5.1 <a href="https://github.com/golddrone7/last3.store-frontend-"> 파이널 프론트엔드 레퍼지토리 </a>
+### 5.2 <a href="https://github.com/golddrone7/last3.store-backend-">파이널 백엔드 레퍼지토리 </a>
+### 5.3 JPA+React를 활용한 ERP, MES 시스템 
+- 3인 팀프로젝트, 진행 기간 3.5주
+
 ## <a href="https://github.com/golddrone7/TIL/blob/main/%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%85.md">트러블 슈팅</a><br>
 - 프로그래밍을 하면서 발생한 오류를 정리한 파일!!
 - 
