@@ -13,6 +13,8 @@
 ### 5.2 <a href="https://github.com/golddrone7/last3.store-backend-">파이널 백엔드 레퍼지토리 </a>
 ### 5.3 <a href="http://last3.store/">JPA+React를 활용한 ERP, MES 시스템 </a>
 - 3인 팀프로젝트, 진행 기간 3.5주
+- 5.3 을 클릭하시면 웹 사이트에 접속할 수 있습니다.
+- 회사코드 : 1111, 아이디 : guest, 비밀번호 : 1a2a3a!!!
 
 ## <a href="https://github.com/golddrone7/TIL/blob/main/%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%85.md">트러블 슈팅</a><br>
 - 프로그래밍을 하면서 발생한 오류를 정리한 파일!!
