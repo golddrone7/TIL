@@ -100,7 +100,7 @@
 - https://m.blog.naver.com/psj9102/221560331178 
 
 ### 공부할 것들
-- 22일날 DFS 복습하고 공부하기!!!!
+- 22일날 DFS 복습하고 공부하기!!!!1
 - React, Spring MVC, 개인 프로젝트 하는 방향으로
 https://www.kisa.or.kr/403
 .
