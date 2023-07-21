@@ -88,6 +88,8 @@
 - [https://velog.io/@jyleedev/AuthenticationPrincipal-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%A0%95%EB%B3%B4-%EB%B0%9B%EC%95%84%EC%98%A4%EA%B8%B0]
 
 
+Record 객체 사용해보기
+
 
 ### 재밌는 내용들
 - [https://bbbicb.tistory.com/55] UUID는 정말 안전할까?11
