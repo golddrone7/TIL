@@ -92,7 +92,7 @@ Record 객체 사용해보기
 
 
 ### 재밌는 내용들
-- [https://bbbicb.tistory.com/55] UUID는 정말 안전할까?11
+- [https://bbbicb.tistory.com/55] UUID는 정말 안전할까?111
 - 
 
 ### 추가로 공부할 내용들
